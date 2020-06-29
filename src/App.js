@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 //Bootstrap
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import Button from 'react-bootstrap/Button';
 
+//Application components
 import Instructions from './Components/Instructions';
 
 
@@ -13,6 +15,10 @@ class App extends Component {
   hideInstructions = () => {
     this.setState({ instructionsVisible: false })
   }
+  showInstructions = () => {
+    this.setState({ instructionsVisible: true })
+  }
+
   render() {
     return (
       <div className="container">
@@ -25,6 +31,8 @@ class App extends Component {
               null
           }
         </Jumbotron>
+
+        <Button variant="info" onClick={this.showInstructions}>Montrer les instructions</Button>
 
       </div>
     );
