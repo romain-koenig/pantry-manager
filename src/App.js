@@ -6,11 +6,11 @@ import Button from 'react-bootstrap/Button';
 
 //Application components
 import Instructions from './Components/Instructions';
+import Products from './Components/Products';
 
 //Test data
-import products from './test-data/products'
-import defaultPantryProducts from './test-data/defaultPantryProducts.js'
-
+import products from './test-data/products';
+import defaultPantryProducts from './test-data/defaultPantryProducts.js';
 
 class App extends Component {
 
@@ -51,9 +51,10 @@ class App extends Component {
 
         {/*here are the products*/}
 
-        <ul>
-          {Object.keys(this.state.pantryProducts).map(key => <li>{key}</li>)}
-        </ul>
+        <Products 
+        products = {this.state.pantryProducts}
+        productData = {this.state.productsData} />
+          
 
         {/* Buttons to manage the app */}
 
