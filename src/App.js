@@ -7,10 +7,18 @@ import Button from 'react-bootstrap/Button';
 //Application components
 import Instructions from './Components/Instructions';
 
+//Test data
+import products from './test-data/products'
+
 
 class App extends Component {
 
-  state = { instructionsVisible: true };
+  //ProductsData = hardcoded data coming from OpenFoodFact until accès to API
+
+  state = {
+    instructionsVisible: true,
+    productsData: products
+  };
 
   hideInstructions = () => {
     this.setState({ instructionsVisible: false })
