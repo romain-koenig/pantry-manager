@@ -31,8 +31,12 @@ class App extends Component {
               null
           }
         </Jumbotron>
+        {
+          !this.state.instructionsVisible ?
+            <Button variant="info" onClick={this.showInstructions}>Montrer les instructions</Button> :
+            null
+        }
 
-        <Button variant="info" onClick={this.showInstructions}>Montrer les instructions</Button>
 
       </div>
     );
