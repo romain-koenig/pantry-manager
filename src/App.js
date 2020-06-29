@@ -7,13 +7,23 @@ import Instructions from './Components/Instructions';
 
 
 class App extends Component {
+
+  state = { instructionsVisible: true };
+
+  hideInstructions = () => {
+    this.setState({ instructionsVisible: false })
+  }
   render() {
     return (
       <div className="container">
 
-        <Jumbotron>
+        <Jumbotron hideInstructions={this.hideInstructions}>
           <h1>Placard Manager</h1>
-          <Instructions />
+          {
+            this.state.instructionsVisible ?
+              <Instructions hideInstructions={this.hideInstructions} /> :
+              null
+          }
         </Jumbotron>
 
       </div>

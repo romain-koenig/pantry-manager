@@ -9,7 +9,7 @@ const Instructions = (props) => {
     <p>
         <Button 
         variant="info" 
-        onClick={props.hideJumbo}
+        onClick={props.hideInstructions}
         size = "sm">
         OK, j'ai compris !</Button>
     </p>
