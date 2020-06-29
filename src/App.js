@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
 
+//Styled Components
+import styled from 'styled-components'
+
 //Application components
 import Instructions from './Components/Instructions';
 import Products from './Components/Products';
@@ -36,25 +39,31 @@ class App extends Component {
     this.setState({ instructionsVisible: true })
   }
 
+
   render() {
+
+    const StyledJumbotron = styled(Jumbotron)`background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%),
+    url(https://i.postimg.cc/ncrVnSLB/pexels-photo-4440173.png)`;
+
+
     return (
       <div className="container">
 
-        <Jumbotron hideInstructions={this.hideInstructions}>
+        <StyledJumbotron>
           <h1>Dans mon placard...</h1>
           {
             this.state.instructionsVisible ?
               <Instructions hideInstructions={this.hideInstructions} /> :
               null
           }
-        </Jumbotron>
+        </StyledJumbotron>
 
         {/*here are the products*/}
 
-        <Products 
-        products = {this.state.pantryProducts}
-        productData = {this.state.productsData} />
-          
+        <Products
+          products={this.state.pantryProducts}
+          productData={this.state.productsData} />
+
 
         {/* Buttons to manage the app */}
 
@@ -73,7 +82,14 @@ class App extends Component {
           TEST : charger les produits par défaut
         </Button>
 
-
+        <footer>
+          Image bannière :
+Photo by <a
+            href="https://www.pexels.com/@taryn-elliott?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels"
+            target="blank">Taryn Elliott</a> from <a
+              href="https://www.pexels.com/photo/clear-glass-jars-on-white-wooden-shelf-4440173/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels"
+              target="blank">Pexels</a>
+        </footer>
       </div>
     );
   }
