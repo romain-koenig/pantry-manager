@@ -9,6 +9,7 @@ import Instructions from './Components/Instructions';
 
 //Test data
 import products from './test-data/products'
+import defaultPantryProducts from './test-data/defaultPantryProducts.js'
 
 
 class App extends Component {
@@ -17,7 +18,15 @@ class App extends Component {
 
   state = {
     instructionsVisible: true,
-    productsData: products
+    productsData: products,
+    pantryProducts: {}
+  };
+
+
+  loadDefaultProducts = () => {
+    this.setState({
+      pantryProducts: defaultPantryProducts
+    })
   };
 
   hideInstructions = () => {
@@ -32,18 +41,36 @@ class App extends Component {
       <div className="container">
 
         <Jumbotron hideInstructions={this.hideInstructions}>
-          <h1>Placard Manager</h1>
+          <h1>Dans mon placard...</h1>
           {
             this.state.instructionsVisible ?
               <Instructions hideInstructions={this.hideInstructions} /> :
               null
           }
         </Jumbotron>
+
+        {/*here are the products*/}
+
+        <ul>
+          {Object.keys(this.state.pantryProducts).map(key => <li>{key}</li>)}
+        </ul>
+
+        {/* Buttons to manage the app */}
+
         {
           !this.state.instructionsVisible ?
-            <Button variant="info" onClick={this.showInstructions}>Montrer les instructions</Button> :
+            <Button
+              variant="info"
+              onClick={this.showInstructions}>
+              Revoir les instructions
+            </Button> :
             null
         }
+        <Button
+          variant="info"
+          onClick={this.loadDefaultProducts}>
+          TEST : charger les produits par défaut
+        </Button>
 
 
       </div>
