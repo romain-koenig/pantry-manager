@@ -2451,7 +2451,782 @@ const products = {
           "obsolete_since_date": "",
           "image_front_small_url": "https://static.openfoodfacts.org/images/products/316/893/000/7432/front.13.200.jpg"
       }
-  }
+  },
+  "3596710456727":
+  {
+    "product": {
+        "traces_tags": [],
+        "serving_quantity": 110,
+        "creator": "openfoodfacts-contributors",
+        "interface_version_modified": "20150316.jqm2",
+        "categories_tags": [
+            "en:plant-based-foods-and-beverages",
+            "en:plant-based-foods",
+            "en:legumes-and-their-products",
+            "en:canned-foods",
+            "en:fruits-and-vegetables-based-foods",
+            "en:legumes",
+            "en:canned-plant-based-foods",
+            "en:vegetables-based-foods",
+            "en:canned-vegetables",
+            "en:green-beans",
+            "en:canned-legumes",
+            "en:canned-green-beans"
+        ],
+        "packaging_debug_tags": [],
+        "nutriscore_grade": "a",
+        "states_tags": [
+            "en:to-be-checked",
+            "en:complete",
+            "en:nutrition-facts-completed",
+            "en:ingredients-completed",
+            "en:expiration-date-completed",
+            "en:packaging-code-to-be-completed",
+            "en:characteristics-completed",
+            "en:categories-completed",
+            "en:brands-completed",
+            "en:packaging-completed",
+            "en:quantity-completed",
+            "en:product-name-completed",
+            "en:photos-validated",
+            "en:photos-uploaded"
+        ],
+        "allergens_hierarchy": [],
+        "allergens_from_user": "(fr) ",
+        "brands": "Auchan",
+        "labels_hierarchy": [
+            "en:green-dot"
+        ],
+        "purchase_places_tags": [
+            "france",
+            "trignac"
+        ],
+        "ingredients_from_or_that_may_be_from_palm_oil_n": 0,
+        "labels_lc": "fr",
+        "ingredients_hierarchy": [
+            "en:green-bean",
+            "en:legume",
+            "en:beans",
+            "en:water",
+            "en:salt"
+        ],
+        "unknown_ingredients_n": 0,
+        "manufacturing_places_debug_tags": [],
+        "image_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.400.jpg",
+        "image_ingredients_small_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/ingredients_fr.12.200.jpg",
+        "product_name_fr_debug_tags": [],
+        "image_thumb_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.100.jpg",
+        "ingredients_text": "Haricots verts, eau, sel.",
+        "countries_debug_tags": [],
+        "data_quality_tags": [
+            "en:ingredients-percent-analysis-ok"
+        ],
+        "photographers_tags": [
+            "openfoodfacts-contributors",
+            "kiliweb"
+        ],
+        "nutrition_score_warning_fruits_vegetables_nuts_from_category_value": 85,
+        "compared_to_category": "en:canned-green-beans",
+        "last_edit_dates_tags": [
+            "2019-10-14",
+            "2019-10",
+            "2019"
+        ],
+        "image_front_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.400.jpg",
+        "traces_debug_tags": [],
+        "nutrition_data": "on",
+        "countries_lc": "fr",
+        "pnns_groups_1_tags": [
+            "fruits-and-vegetables",
+            "known"
+        ],
+        "lc": "fr",
+        "countries_tags": [
+            "en:france"
+        ],
+        "purchase_places": "France,Trignac",
+        "product_name_fr": "Haricots Verts Extra-fins",
+        "rev": 16,
+        "_id": "3596710456727",
+        "allergens_from_ingredients": "",
+        "manufacturing_places": "",
+        "additives_old_n": 0,
+        "nutrition_score_warning_fruits_vegetables_nuts_from_category": "en:vegetables-based-foods",
+        "origins_debug_tags": [],
+        "ingredients_text_with_allergens": "Haricots verts, eau, sel.",
+        "ingredients_text_fr": "Haricots verts, eau, sel.",
+        "additives_tags": [],
+        "nutrition_grade_fr": "a",
+        "languages_hierarchy": [
+            "en:french"
+        ],
+        "ingredients_from_palm_oil_n": 0,
+        "brands_tags": [
+            "auchan"
+        ],
+        "ingredients_text_debug": "Haricots verts, eau, sel.",
+        "data_quality_warnings_tags": [],
+        "ingredients_percent_analysis": 1,
+        "data_sources": "App - yuka, Apps",
+        "ingredients_text_with_allergens_fr": "Haricots verts, eau, sel.",
+        "countries_hierarchy": [
+            "en:france"
+        ],
+        "other_nutritional_substances_tags": [],
+        "ingredients_that_may_be_from_palm_oil_n": 0,
+        "stores_tags": [
+            "auchan"
+        ],
+        "packaging": "Conserve,Métal",
+        "last_image_dates_tags": [
+            "2019-10-14",
+            "2019-10",
+            "2019"
+        ],
+        "traces_from_ingredients": "",
+        "ingredients_ids_debug": [
+            "haricots-verts",
+            "eau",
+            "sel"
+        ],
+        "unique_scans_n": 32,
+        "origins": "",
+        "completeness": 0.9,
+        "additives_debug_tags": [],
+        "image_ingredients_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/ingredients_fr.12.400.jpg",
+        "ingredients_from_palm_oil_tags": [],
+        "image_front_thumb_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.100.jpg",
+        "pnns_groups_1": "Fruits and vegetables",
+        "allergens_tags": [],
+        "nova_groups": "3",
+        "ingredients_that_may_be_from_palm_oil_tags": [],
+        "pnns_groups_2": "Vegetables",
+        "entry_dates_tags": [
+            "2017-11-28",
+            "2017-11",
+            "2017"
+        ],
+        "nutrition_data_per": "100g",
+        "interface_version_created": "20120622",
+        "minerals_prev_tags": [],
+        "ingredients_analysis_tags": [
+            "en:palm-oil-free",
+            "en:vegan",
+            "en:vegetarian"
+        ],
+        "ingredients_original_tags": [
+            "en:green-bean",
+            "en:water",
+            "en:salt"
+        ],
+        "brands_debug_tags": [],
+        "serving_size_debug_tags": [],
+        "product_name": "Haricots Verts Extra-fins",
+        "ingredients_n_tags": [
+            "3",
+            "1-10"
+        ],
+        "allergens": "",
+        "categories_hierarchy": [
+            "en:plant-based-foods-and-beverages",
+            "en:plant-based-foods",
+            "en:legumes-and-their-products",
+            "en:canned-foods",
+            "en:fruits-and-vegetables-based-foods",
+            "en:legumes",
+            "en:canned-plant-based-foods",
+            "en:vegetables-based-foods",
+            "en:canned-vegetables",
+            "en:green-beans",
+            "en:canned-legumes",
+            "en:canned-green-beans"
+        ],
+        "traces_hierarchy": [],
+        "generic_name_fr": "",
+        "fruits-vegetables-nuts_100g_estimate": 85,
+        "data_quality_errors_tags": [],
+        "created_t": 1511903251,
+        "vitamins_tags": [],
+        "code": "3596710456727",
+        "image_nutrition_thumb_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/nutrition_fr.9.100.jpg",
+        "minerals_tags": [],
+        "nucleotides_tags": [],
+        "nutriscore_score": -5,
+        "labels_prev_hierarchy": [
+            "en:green-dot"
+        ],
+        "additives_prev_original_tags": [],
+        "last_modified_by": "kiliweb",
+        "codes_tags": [
+            "code-13",
+            "3596710456xxx",
+            "359671045xxxx",
+            "35967104xxxxx",
+            "3596710xxxxxx",
+            "359671xxxxxxx",
+            "35967xxxxxxxx",
+            "3596xxxxxxxxx",
+            "359xxxxxxxxxx",
+            "35xxxxxxxxxxx",
+            "3xxxxxxxxxxxx"
+        ],
+        "images": {
+            "front_fr": {
+                "y1": "46.73333740234375",
+                "y2": "358.73333740234375",
+                "normalize": "false",
+                "x2": "253.75",
+                "angle": "0",
+                "geometry": "1065x1560-203-233",
+                "imgid": "1",
+                "x1": "40.75",
+                "rev": "4",
+                "sizes": {
+                    "200": {
+                        "w": 137,
+                        "h": 200
+                    },
+                    "100": {
+                        "w": 68,
+                        "h": 100
+                    },
+                    "400": {
+                        "w": 273,
+                        "h": 400
+                    },
+                    "full": {
+                        "h": 1560,
+                        "w": 1065
+                    }
+                },
+                "white_magic": "false"
+            },
+            "4": {
+                "sizes": {
+                    "full": {
+                        "h": 1200,
+                        "w": 901
+                    },
+                    "400": {
+                        "w": 300,
+                        "h": 400
+                    },
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    }
+                },
+                "uploader": "kiliweb",
+                "uploaded_t": 1571069750
+            },
+            "2": {
+                "sizes": {
+                    "100": {
+                        "w": 100,
+                        "h": 62
+                    },
+                    "full": {
+                        "w": 2050,
+                        "h": 1268
+                    },
+                    "400": {
+                        "w": 400,
+                        "h": 247
+                    }
+                },
+                "uploader": "kiliweb",
+                "uploaded_t": "1512983015"
+            },
+            "nutrition_fr": {
+                "ocr": 1,
+                "rev": "9",
+                "orientation": "0",
+                "sizes": {
+                    "200": {
+                        "w": 200,
+                        "h": 124
+                    },
+                    "100": {
+                        "w": 100,
+                        "h": 62
+                    },
+                    "400": {
+                        "h": 247,
+                        "w": 400
+                    },
+                    "full": {
+                        "w": 2050,
+                        "h": 1268
+                    }
+                },
+                "white_magic": "0",
+                "y1": null,
+                "normalize": "0",
+                "y2": null,
+                "x2": null,
+                "angle": null,
+                "geometry": "0x0-0-0",
+                "imgid": "2",
+                "x1": null
+            },
+            "1": {
+                "uploader": "openfoodfacts-contributors",
+                "sizes": {
+                    "400": {
+                        "w": 300,
+                        "h": 400
+                    },
+                    "full": {
+                        "w": 1500,
+                        "h": 2000
+                    },
+                    "100": {
+                        "w": 75,
+                        "h": 100
+                    }
+                },
+                "uploaded_t": "1511903251"
+            },
+            "ingredients_fr": {
+                "y2": null,
+                "normalize": "0",
+                "angle": null,
+                "x2": null,
+                "y1": null,
+                "x1": null,
+                "geometry": "0x0-0-0",
+                "imgid": "3",
+                "ocr": 1,
+                "white_magic": "0",
+                "rev": "12",
+                "orientation": null,
+                "sizes": {
+                    "400": {
+                        "w": 400,
+                        "h": 98
+                    },
+                    "full": {
+                        "h": 743,
+                        "w": 3024
+                    },
+                    "200": {
+                        "w": 200,
+                        "h": 49
+                    },
+                    "100": {
+                        "w": 100,
+                        "h": 25
+                    }
+                }
+            },
+            "3": {
+                "uploader": "kiliweb",
+                "sizes": {
+                    "100": {
+                        "w": 100,
+                        "h": 25
+                    },
+                    "full": {
+                        "h": 743,
+                        "w": 3024
+                    },
+                    "400": {
+                        "h": 98,
+                        "w": 400
+                    }
+                },
+                "uploaded_t": "1512983018"
+            }
+        },
+        "last_editor": "kiliweb",
+        "selected_images": {
+            "nutrition": {
+                "thumb": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/nutrition_fr.9.100.jpg"
+                },
+                "display": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/nutrition_fr.9.400.jpg"
+                },
+                "small": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/nutrition_fr.9.200.jpg"
+                }
+            },
+            "front": {
+                "display": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.400.jpg"
+                },
+                "small": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.200.jpg"
+                },
+                "thumb": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.100.jpg"
+                }
+            },
+            "ingredients": {
+                "display": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/ingredients_fr.12.400.jpg"
+                },
+                "small": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/ingredients_fr.12.200.jpg"
+                },
+                "thumb": {
+                    "fr": "https://static.openfoodfacts.org/images/products/359/671/045/6727/ingredients_fr.12.100.jpg"
+                }
+            }
+        },
+        "max_imgid": "4",
+        "editors_tags": [
+            "yuka.UTZBSkhhVTVqL1FnZ2NBajF6L253L2hsN1pqMVgxT2JHdklRSVE9PQ",
+            "kiliweb",
+            "beniben",
+            "openfoodfacts-contributors",
+            "segundo",
+            "yuka.WExoZU9id25tOU12dE1FTTBoNzQ5OTVJK0xDeWJETHFjYk1iSVE9PQ"
+        ],
+        "popularity_key": -80049999964,
+        "ingredients": [
+            {
+                "percent_min": 33.3333333333333,
+                "vegan": "yes",
+                "id": "en:green-bean",
+                "text": "Haricots verts",
+                "vegetarian": "yes",
+                "percent_max": 100,
+                "rank": 1
+            },
+            {
+                "percent_min": 0,
+                "text": "eau",
+                "id": "en:water",
+                "vegan": "yes",
+                "vegetarian": "yes",
+                "percent_max": 50,
+                "rank": 2
+            },
+            {
+                "percent_min": 0,
+                "vegetarian": "yes",
+                "vegan": "yes",
+                "id": "en:salt",
+                "text": "sel",
+                "rank": 3,
+                "percent_max": 33.3333333333333
+            }
+        ],
+        "generic_name": "",
+        "pnns_groups_2_tags": [
+            "vegetables",
+            "known"
+        ],
+        "countries": "France",
+        "update_key": "sortkey",
+        "ingredients_text_fr_debug_tags": [],
+        "nova_group_debug": " -- ingredients/en:salt : 3",
+        "correctors_tags": [
+            "segundo",
+            "yuka.UTZBSkhhVTVqL1FnZ2NBajF6L253L2hsN1pqMVgxT2JHdklRSVE9PQ",
+            "openfoodfacts-contributors",
+            "beniben",
+            "yuka.WExoZU9id25tOU12dE1FTTBoNzQ5OTVJK0xDeWJETHFjYk1iSVE9PQ"
+        ],
+        "labels_prev_tags": [
+            "en:green-dot"
+        ],
+        "emb_codes_orig": "",
+        "scans_n": 54,
+        "labels_tags": [
+            "en:green-dot"
+        ],
+        "data_quality_info_tags": [
+            "en:ingredients-percent-analysis-ok"
+        ],
+        "nova_group": 3,
+        "id": "3596710456727",
+        "link_debug_tags": [],
+        "origins_tags": [],
+        "image_nutrition_small_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/nutrition_fr.9.200.jpg",
+        "image_ingredients_thumb_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/ingredients_fr.12.100.jpg",
+        "checkers_tags": [],
+        "nutrient_levels_tags": [
+            "en:fat-in-low-quantity",
+            "en:saturated-fat-in-low-quantity",
+            "en:sugars-in-low-quantity",
+            "en:salt-in-moderate-quantity"
+        ],
+        "nova_groups_tags": [
+            "en:3-processed-foods"
+        ],
+        "ingredients_debug": [
+            "Haricots verts",
+            ",",
+            null,
+            null,
+            null,
+            " eau",
+            ",",
+            null,
+            null,
+            null,
+            " sel."
+        ],
+        "lang": "fr",
+        "vitamins_prev_tags": [],
+        "_keywords": [
+            "fruit",
+            "aliment",
+            "boisson",
+            "point",
+            "vegetaux",
+            "en",
+            "origine",
+            "derive",
+            "auchan",
+            "et",
+            "plante",
+            "base",
+            "conserve",
+            "vert",
+            "extra-fin",
+            "legume",
+            "haricot",
+            "de",
+            "vegetale",
+            "legumineuse"
+        ],
+        "last_image_t": 1571069750,
+        "popularity_tags": [
+            "top-50000-scans-2020",
+            "top-100000-scans-2020",
+            "top-90-percent-scans-2020",
+            "top-95-percent-scans-2020",
+            "top-50000-fr-scans-2020",
+            "top-100000-fr-scans-2020",
+            "top-country-fr-scans-2020",
+            "top-50000-scans-2019",
+            "top-100000-scans-2019",
+            "at-least-5-scans-2019",
+            "at-least-10-scans-2019",
+            "top-90-percent-scans-2019",
+            "top-95-percent-scans-2019",
+            "top-50000-fr-scans-2019",
+            "top-100000-fr-scans-2019",
+            "top-country-fr-scans-2019",
+            "at-least-5-fr-scans-2019",
+            "at-least-10-fr-scans-2019"
+        ],
+        "debug_param_sorted_langs": [
+            "fr"
+        ],
+        "additives_old_tags": [],
+        "ciqual_food_name_tags": [
+            "unknown"
+        ],
+        "completed_t": 1513247094,
+        "sortkey": -98428930250,
+        "categories": "Aliments et boissons à base de végétaux, Aliments d'origine végétale, Légumineuses et dérivés, Conserves, Aliments à base de fruits et de légumes, Légumineuses, Aliments à base de plantes en conserve, Légumes et dérivés, Légumes en conserve, Légumineuses en conserve, Haricots verts en conserve",
+        "states_hierarchy": [
+            "en:to-be-checked",
+            "en:complete",
+            "en:nutrition-facts-completed",
+            "en:ingredients-completed",
+            "en:expiration-date-completed",
+            "en:packaging-code-to-be-completed",
+            "en:characteristics-completed",
+            "en:categories-completed",
+            "en:brands-completed",
+            "en:packaging-completed",
+            "en:quantity-completed",
+            "en:product-name-completed",
+            "en:photos-validated",
+            "en:photos-uploaded"
+        ],
+        "emb_codes_tags": [],
+        "languages": {
+            "en:french": 5
+        },
+        "stores_debug_tags": [],
+        "quantity_debug_tags": [],
+        "ingredients_text_debug_tags": [],
+        "expiration_date_debug_tags": [],
+        "states": "en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-completed, en:packaging-code-to-be-completed, en:characteristics-completed, en:categories-completed, en:brands-completed, en:packaging-completed, en:quantity-completed, en:product-name-completed, en:photos-validated, en:photos-uploaded",
+        "manufacturing_places_tags": [],
+        "ingredients_tags": [
+            "en:green-bean",
+            "en:legume",
+            "en:beans",
+            "en:water",
+            "en:salt"
+        ],
+        "nutrition_data_prepared_per": "100g",
+        "traces_from_user": "(fr) ",
+        "product_quantity": 440,
+        "languages_codes": {
+            "fr": 5
+        },
+        "lang_debug_tags": [],
+        "nutrition_score_beverage": 0,
+        "nutrition_grades": "a",
+        "nutriments": {
+            "proteins_serving": 1.76,
+            "proteins_100g": 1.6,
+            "energy-kcal_100g": 24,
+            "proteins": 1.6,
+            "fat_unit": "g",
+            "energy_100g": 100,
+            "salt_value": 0.85,
+            "energy": 100,
+            "fiber_value": 3.2,
+            "nutrition-score-fr_serving": -5,
+            "energy-kcal_serving": 26.4,
+            "sodium_value": 0.34,
+            "fiber": 3.2,
+            "salt_100g": 0.85,
+            "sugars": 0.6,
+            "fat": 0.5,
+            "energy_value": 24,
+            "proteins_unit": "g",
+            "salt_unit": "g",
+            "carbohydrates_100g": 2.3,
+            "carbohydrates_serving": 2.53,
+            "sugars_serving": 0.66,
+            "proteins_value": 1.6,
+            "sodium_serving": 0.374,
+            "sugars_unit": "g",
+            "fat_serving": 0.55,
+            "sugars_value": 0.6,
+            "carbohydrates_value": 2.3,
+            "nutrition-score-fr": -5,
+            "saturated-fat_value": 0.2,
+            "carbohydrates": 2.3,
+            "fiber_100g": 3.2,
+            "fiber_serving": 3.52,
+            "carbohydrates_unit": "g",
+            "fat_value": 0.5,
+            "saturated-fat": 0.2,
+            "saturated-fat_unit": "g",
+            "energy_unit": "kcal",
+            "nutrition-score-fr_100g": -5,
+            "nova-group_serving": 3,
+            "saturated-fat_100g": 0.2,
+            "nova-group": 3,
+            "salt_serving": 0.935,
+            "sodium": 0.34,
+            "sodium_100g": 0.34,
+            "fruits-vegetables-nuts-estimate-from-ingredients_100g": 0,
+            "salt": 0.85,
+            "energy-kcal": 24,
+            "sugars_100g": 0.6,
+            "sodium_unit": "g",
+            "energy_serving": 110,
+            "fat_100g": 0.5,
+            "energy-kcal_unit": "kcal",
+            "energy-kcal_value": 24,
+            "saturated-fat_serving": 0.22,
+            "nova-group_100g": 3,
+            "fiber_unit": "g"
+        },
+        "emb_codes_debug_tags": [],
+        "informers_tags": [
+            "openfoodfacts-contributors",
+            "segundo",
+            "yuka.UTZBSkhhVTVqL1FnZ2NBajF6L253L2hsN1pqMVgxT2JHdklRSVE9PQ",
+            "kiliweb",
+            "beniben"
+        ],
+        "data_quality_bugs_tags": [],
+        "no_nutrition_data": "",
+        "image_small_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.200.jpg",
+        "stores": "Auchan",
+        "categories_lc": "fr",
+        "labels": "Point Vert",
+        "misc_tags": [
+            "en:nutrition-fruits-vegetables-nuts-from-category",
+            "en:nutrition-fruits-vegetables-nuts-from-category-en-vegetables-based-foods",
+            "en:nutrition-all-nutriscore-values-known",
+            "en:nutriscore-computed"
+        ],
+        "traces": "",
+        "ingredients_n": 3,
+        "nutrition_grades_tags": [
+            "a"
+        ],
+        "amino_acids_prev_tags": [],
+        "additives_original_tags": [],
+        "image_front_small_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/front_fr.4.200.jpg",
+        "category_properties": {},
+        "link": "",
+        "packaging_tags": [
+            "conserve",
+            "metal"
+        ],
+        "unknown_nutrients_tags": [],
+        "additives_n": 0,
+        "languages_tags": [
+            "en:french",
+            "en:1"
+        ],
+        "image_nutrition_url": "https://static.openfoodfacts.org/images/products/359/671/045/6727/nutrition_fr.9.400.jpg",
+        "amino_acids_tags": [],
+        "emb_codes": "",
+        "last_modified_t": 1571069750,
+        "known_ingredients_n": 5,
+        "quantity": "440 g égoutté",
+        "serving_size": "110 g",
+        "nucleotides_prev_tags": [],
+        "nutriscore_data": {
+            "energy_value": 100,
+            "saturated_fat": 0.2,
+            "sugars": 0.6,
+            "negative_points": 3,
+            "saturated_fat_ratio_value": 40,
+            "grade": "a",
+            "saturated_fat_points": 0,
+            "proteins_value": 1.6,
+            "sugars_points": 0,
+            "proteins": 1.6,
+            "fiber_points": 3,
+            "sodium_value": 340,
+            "fiber": 3.2,
+            "energy": 100,
+            "energy_points": 0,
+            "fiber_value": 3.2,
+            "saturated_fat_value": 0.2,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils_points": 5,
+            "is_water": 0,
+            "score": -5,
+            "sodium": 340,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils": 85,
+            "saturated_fat_ratio": 40,
+            "is_fat": 0,
+            "saturated_fat_ratio_points": 6,
+            "proteins_points": 0,
+            "is_beverage": 0,
+            "is_cheese": 0,
+            "sugars_value": 0.6,
+            "sodium_points": 3,
+            "positive_points": 8,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils_value": 85
+        },
+        "nutrient_levels": {
+            "saturated-fat": "low",
+            "salt": "moderate",
+            "sugars": "low",
+            "fat": "low"
+        },
+        "data_sources_tags": [
+            "app-yuka",
+            "apps"
+        ],
+        "expiration_date": "25/10/2018",
+        "purchase_places_debug_tags": [],
+        "complete": 1,
+        "generic_name_fr_debug_tags": [],
+        "cities_tags": []
+    },
+    "status": 1,
+    "status_verbose": "product found",
+    "code": "3596710456727"
+}
 }
 
 
