@@ -12,12 +12,13 @@ class Product extends Component {
   render() {
     const { name, quantity, desiredQuantity, photo } = this.props.product;
 
-
+    const cardColor = (quantity > desiredQuantity && quantity < desiredQuantity + 3) ? "light" :
+    quantity === desiredQuantity ? "warning" : 
+      quantity < desiredQuantity ? "danger" :
+        "success";
     return (
-      <Card>
-        <Card.Img
-          variant="bottom"
-          src={photo} />
+      <Card
+        bg={cardColor}>
 
         <Card.Body>
           <Card.Title>
@@ -27,29 +28,32 @@ class Product extends Component {
 
             <div className="stock">En stock : {quantity}</div>
             <div className="seuil">A conserver : {desiredQuantity}</div>
-            
+
             <ButtonGroup>
               <Button
                 onClick={() => this.props.quantityUp(this.props.id)}
                 variant="primary">
                 <span role="img" aria-label="+">
                   ➕
-                </span>
+        </span>
               </Button>
               <Button
                 onClick={() => this.props.quantityDown(this.props.id)}
                 variant="primary">
                 <span role="img" aria-label="-">
                   ➖
-                </span>
+        </span>
               </Button>
             </ButtonGroup>
             <Barcode value={this.props.id} />
-            
-            </Card.Text>
+
+          </Card.Text>
 
 
         </Card.Body>
+        <Card.Img
+          variant="bottom"
+          src={photo} />
       </Card>
     );
   }
