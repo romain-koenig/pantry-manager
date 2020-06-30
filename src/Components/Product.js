@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 //Bootstrap
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
+//Barcode
 import Barcode from 'react-barcode';
 
 class Product extends Component {
@@ -22,9 +25,25 @@ class Product extends Component {
           </Card.Title>
           <Card.Text>
 
-            <p>En stock : {quantity}</p>
-            <p>A conserver : {desiredQuantity}</p>
-
+            <div className="stock">En stock : {quantity}</div>
+            <div className="seuil">A conserver : {desiredQuantity}</div>
+            
+            <ButtonGroup>
+              <Button
+                onClick={() => this.props.quantityUp(this.props.id)}
+                variant="primary">
+                <span role="img" aria-label="+">
+                  ➕
+                </span>
+              </Button>
+              <Button
+                onClick={() => this.props.quantityDown(this.props.id)}
+                variant="primary">
+                <span role="img" aria-label="-">
+                  ➖
+                </span>
+              </Button>
+            </ButtonGroup>
             <Barcode value={this.props.id} />
             
             </Card.Text>

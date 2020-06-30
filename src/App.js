@@ -15,6 +15,10 @@ import Products from './Components/Products';
 import products from './test-data/products';
 import defaultPantryProducts from './test-data/defaultPantryProducts.js';
 
+//Firebase
+import base from './base'
+
+
 class App extends Component {
 
   //ProductsData = hardcoded data coming from OpenFoodFact until accès to API
@@ -24,6 +28,30 @@ class App extends Component {
     productsData: products,
     pantryProducts: {}
   };
+
+      //lifecycle management
+
+      componentDidMount() {
+        console.log("Mounted !")
+        this.ref = base.syncState('pantry/TEST',
+            {
+                context: this,
+                state: 'pantryProducts'
+            });
+
+    }
+
+    componentDidUpdate() {
+        localStorage.setItem('pantry/TEST', JSON.stringify(this.state.pantryProducts));
+    };
+
+
+    componentWillUnmount() {
+        base.removeBinding(this.ref);
+    };
+
+
+    //End Lifecycle management
 
 
   loadDefaultProducts = () => {
@@ -39,6 +67,33 @@ class App extends Component {
     this.setState({ instructionsVisible: true })
   }
 
+  updateQuantity = (key, qty) => {
+    //1. take a copy of existing state
+    const pantryProducts = { ...this.state.pantryProducts };
+    //2. Update Quantity
+    pantryProducts[key].quantity = pantryProducts[key].quantity + qty;
+    //3. Update the state
+    this.setState({ pantryProducts: pantryProducts })
+  }
+
+  quantityUp = (key) => {
+    this.updateQuantity(key, 1);
+  }
+  quantityDown = (key) => {
+    this.updateQuantity(key, -1);
+  }
+
+  quantityDown = (key) => {
+
+    //1. take a copy of existing state
+    const pantryProducts = { ...this.state.pantryProducts };
+    //2. Update Quantity
+    pantryProducts[key].quantity = pantryProducts[key].quantity > 0 ?
+      pantryProducts[key].quantity - 1 :
+      0;
+    //3. Update the state
+    this.setState({ pantryProducts: pantryProducts })
+  }
 
   render() {
 
@@ -50,11 +105,11 @@ class App extends Component {
       <div className="container">
 
         <StyledJumbotron>
-          <h1>Dans mon placard...</h1>
+          <h1>Dans mon placard...</h1> 
           {
             this.state.instructionsVisible ?
               <Instructions hideInstructions={this.hideInstructions} /> :
-              null
+              null 
           }
         </StyledJumbotron>
 
@@ -62,7 +117,9 @@ class App extends Component {
 
         <Products
           products={this.state.pantryProducts}
-          productData={this.state.productsData} />
+          productData={this.state.productsData}
+          quantityUp = {(key) => this.quantityUp(key)}
+          quantityDown = {(key) => this.quantityDown(key)} />
 
 
         {/* Buttons to manage the app */}

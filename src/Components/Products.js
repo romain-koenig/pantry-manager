@@ -20,7 +20,10 @@ class Products extends Component {
               quantity: this.props.products[key].quantity,
               desiredQuantity: this.props.products[key].desiredQuantity,
               photo: this.props.productData[key].product.image_front_url
-            }} />
+            }}
+            quantityUp={(key) => this.props.quantityUp(key)}
+            quantityDown={(key) => this.props.quantityDown(key)}
+          />
         )}
 
       </CardColumns>
