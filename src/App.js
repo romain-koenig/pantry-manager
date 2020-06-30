@@ -10,14 +10,15 @@ import styled from 'styled-components'
 //Application components
 import Instructions from './Components/Instructions';
 import Products from './Components/Products';
+import Login from './Components/Login';
 
 //Test data
 import products from './test-data/products';
 import defaultPantryProducts from './test-data/defaultPantryProducts.js';
 
 //Firebase
-import base from './base'
-
+import base, { firebaseApp } from "./base";
+import firebase from 'firebase';
 
 class App extends Component {
 
@@ -29,29 +30,30 @@ class App extends Component {
     pantryProducts: {}
   };
 
-      //lifecycle management
+  //lifecycle management
 
-      componentDidMount() {
-        console.log("Mounted !")
-        this.ref = base.syncState('pantry/TEST',
-            {
-                context: this,
-                state: 'pantryProducts'
-            });
-
-    }
-
-    componentDidUpdate() {
-        localStorage.setItem('pantry/TEST', JSON.stringify(this.state.pantryProducts));
-    };
+  componentDidMount() {
 
 
-    componentWillUnmount() {
-        base.removeBinding(this.ref);
-    };
+
+    // Firebase Auth
+    firebase.auth().onAuthStateChanged(user => {
+      this.authHandler({ user });
+    })
+
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(`pantry/${this.state.uid}`, JSON.stringify(this.state.pantryProducts));
+  };
 
 
-    //End Lifecycle management
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  };
+
+
+  //End Lifecycle management
 
 
   loadDefaultProducts = () => {
@@ -95,21 +97,72 @@ class App extends Component {
     this.setState({ pantryProducts: pantryProducts })
   }
 
+
+
+
+  authHandler = async (authData) => {
+    //Set the state of inventory component
+    const userId = authData.user ? authData.user.uid : null;
+    this.setState({
+      uid: userId,
+    });
+
+    if (userId) {
+      // Firebase sync
+      this.ref = base.syncState(`pantry/${this.state.uid}`,
+        {
+          context: this,
+          state: 'pantryProducts'
+        });
+    }
+    else {
+
+      base.removeBinding(this.ref);
+    }
+
+
+    console.log(authData)
+  }
+
+
+  authenticate = (provider) => {
+    const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+    firebaseApp
+      .auth()
+      .signInWithPopup(authProvider)
+      .then(this.authHandler);
+  };
+
+  logout = async () => {
+    console.log("Logging out!");
+    await firebase.auth().signOut();
+    this.setState({
+      uid: null,
+    })
+  };
+
+
   render() {
 
     const StyledJumbotron = styled(Jumbotron)`background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%),
     url(https://i.postimg.cc/ncrVnSLB/pexels-photo-4440173.png)`;
+    const logout = <Button onClick={this.logout} variant="danger">Déconnexion</Button>
 
+    if (!this.state.uid) {
+      return (
+        <Login authenticate={this.authenticate}></Login>
+      )
 
+    }
     return (
       <div className="container">
 
         <StyledJumbotron>
-          <h1>Dans mon placard...</h1> 
+          <h1>Dans mon placard...</h1>
           {
             this.state.instructionsVisible ?
               <Instructions hideInstructions={this.hideInstructions} /> :
-              null 
+              null
           }
         </StyledJumbotron>
 
@@ -118,8 +171,8 @@ class App extends Component {
         <Products
           products={this.state.pantryProducts}
           productData={this.state.productsData}
-          quantityUp = {(key) => this.quantityUp(key)}
-          quantityDown = {(key) => this.quantityDown(key)} />
+          quantityUp={(key) => this.quantityUp(key)}
+          quantityDown={(key) => this.quantityDown(key)} />
 
 
         {/* Buttons to manage the app */}
@@ -137,7 +190,8 @@ class App extends Component {
           variant="info"
           onClick={this.loadDefaultProducts}>
           TEST : charger les produits par défaut
-        </Button>
+          </Button>
+        {logout}
 
         <footer>
           Image bannière :

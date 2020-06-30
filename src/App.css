@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+
+button.github,
+input[type=submit].github,
+button.google,
+input[type=submit].google,
+button.twitter,
+input[type=submit].twitter {
+  border: 0;
+  display: block;
+  margin-bottom: 2rem;
+  width: 100%;
+  color: #fff;
+  padding: 2rem;
+}
+button.github,
+input[type=submit].github {
+  background: #82d465;
+}
+button.github:after,
+input[type=submit].github:after {
+  background: #5cc437;
+}
+button.google,
+input[type=submit].google {
+  background: #ea4335;
+}
+button.google:after,
+input[type=submit].google:after {
+  background: #d03224;
+}
+button.twitter,
+input[type=submit].twitter {
+  background: #5ea9dd;
+}
+button.twitter:after,
+input[type=submit].twitter:after {
+  background: #2c8dd0;
+}
