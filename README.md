@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7ede6b3b-c954-42d0-a2d2-8985d7c2e060/deploy-status)](https://app.netlify.com/sites/monplacard/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
