@@ -1,8 +1,30 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7ede6b3b-c954-42d0-a2d2-8985d7c2e060/deploy-status)](https://app.netlify.com/sites/monplacard/deploys)
+# Pantry Manager
+
+Pantry Manager in React  
+User Interface made with Bootstrap  
+Authentification + Data stored in Firebase
+
+The project is automatically deployed on Netlify
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7ede6b3b-c954-42d0-a2d2-8985d7c2e060/deploy-status)](https://monplacard.netlify.app)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/romain-koenig/pantry-manager)
+![GitHub top language](https://img.shields.io/github/languages/top/romain-koenig/pantry-manager)
+![W3C Validation](https://img.shields.io/w3c-validation/default?targetUrl=https%3A%2F%2Fmonplacard.netlify.app%2F)
+![GitHub](https://img.shields.io/github/license/romain-koenig/pantry-manager)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fmonplacard.netlify.app%2F)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## To work on the project
+
+1. Fork / Clone the project
+1. Create a Firebase project
+1. Setup the right informations in base.js (authDomain & databaseURL)
+1. Setup you Firebase API key in .env file
+1. `npm init`
+1. `npm start`
+
+## Npm scripts available
 
 In the project directory, you can run:
 

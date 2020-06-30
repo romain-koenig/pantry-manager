@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //Bootstrap
 import CardColumns from 'react-bootstrap/CardColumns'
 
-//My COmponents
+//My Components
 import Product from './Product'
 
 class Products extends Component {
