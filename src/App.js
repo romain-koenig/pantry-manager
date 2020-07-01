@@ -49,9 +49,10 @@ class App extends Component {
 
 
   componentWillUnmount() {
-    base.removeBinding(this.ref);
+    if (this.ref) {
+      base.removeBinding(this.ref);
+    }
   };
-
 
   //End Lifecycle management
 
@@ -97,9 +98,6 @@ class App extends Component {
     this.setState({ pantryProducts: pantryProducts })
   }
 
-
-
-
   authHandler = async (authData) => {
     //Set the state of inventory component
     const userId = authData.user ? authData.user.uid : null;
@@ -108,6 +106,10 @@ class App extends Component {
     });
 
     if (userId) {
+      // remove a previous databinding if not yet removed
+      if (this.ref) {
+        base.removeBinding(this.ref);
+      }
       // Firebase sync
       this.ref = base.syncState(`pantry/${this.state.uid}`,
         {
@@ -116,14 +118,12 @@ class App extends Component {
         });
     }
     else {
-
-      base.removeBinding(this.ref);
+      if (this.ref) {
+        base.removeBinding(this.ref);
+      }
     }
-
-
     console.log(authData)
   }
-
 
   authenticate = (provider) => {
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
