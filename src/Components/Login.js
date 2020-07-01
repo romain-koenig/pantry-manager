@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//
+import Button from 'react-bootstrap/Button';
+
 class Login extends React.Component {
     
     static propTypes = {
@@ -13,9 +16,9 @@ class Login extends React.Component {
                 <nav className="login">
                     <h2>Authentification</h2>
                     <p>Autentification nécessaire pour gérer l'inventaire</p>
-                    <button className="twitter" onClick={() => this.props.authenticate('Twitter')}>Login avec Twitter</button>
-                    <button className="github" onClick={() => this.props.authenticate('Github')}>Login avec GitHub</button>
-                    <button className="google" onClick={() => this.props.authenticate('Google')}>Login avec Google</button>
+                    <Button variant="primary" onClick={() => this.props.authenticate('Twitter')}>Login avec Twitter</Button>
+                    <Button variant="dark" onClick={() => this.props.authenticate('Github')}>Login avec GitHub</Button>
+                    <Button variant="danger" onClick={() => this.props.authenticate('Google')}>Login avec Google</Button>
                 </nav>
             </>
         );
