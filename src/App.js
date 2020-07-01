@@ -141,8 +141,30 @@ class App extends Component {
     })
   };
 
+  // Get product info from Open Food Data
+getInfosFromOpenFoodData = (barcode) => {
 
+  //1 take a copy ok productsData
+  const prodData = { ...this.state.productsData };
+  //2 Get new data from API 
+  fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
+  .then(res => res.json())
+  .then((data) => {
+    if (data.status === 1) {
+      //3 Add new data to the copy
+      prodData[data.code] = data;
+      //4 Update the state
+      this.setState({ productsData: prodData })
+    }
+    else {
+      console.log(`Product ${barcode} not found`)
+    }
+  })
+  .catch(console.log);
+}
+  
   render() {
+    //this.getInfosFromOpenFoodData("8001505005599");
 
     const StyledJumbotron = styled(Jumbotron)`background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%),
     url(https://i.postimg.cc/ncrVnSLB/pexels-photo-4440173.png)`;
