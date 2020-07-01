@@ -150,7 +150,9 @@ class App extends Component {
 
     if (!this.state.uid) {
       return (
-        <Login authenticate={this.authenticate}></Login>
+        <div className="container">
+          <Login authenticate={this.authenticate}></Login>
+        </div>
       )
 
     }
