@@ -27,7 +27,7 @@ class App extends Component {
 
   state = {
     instructionsVisible: true,
-    productsData: productsSimple,
+    productsData: {},
     pantryProducts: {}
   };
 
@@ -63,6 +63,7 @@ class App extends Component {
 
   loadDefaultProducts = () => {
     this.setState({
+      productsData: productsSimple,
       pantryProducts: defaultPantryProducts
     })
   };
@@ -119,6 +120,12 @@ class App extends Component {
         {
           context: this,
           state: 'pantryProducts'
+        });
+
+        base.syncState(`pantry/productsData`,
+        {
+          context: this,
+          state: 'productsData'
         });
     }
     else {
