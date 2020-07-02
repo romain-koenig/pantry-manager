@@ -13,7 +13,7 @@ import Products from './Components/Products';
 import Login from './Components/Login';
 
 //Test data
-import products from './test-data/products';
+import productsSimple from './test-data/productsSimple';
 import defaultPantryProducts from './test-data/defaultPantryProducts.js';
 
 //Firebase
@@ -26,7 +26,7 @@ class App extends Component {
 
   state = {
     instructionsVisible: true,
-    productsData: products,
+    productsData: productsSimple,
     pantryProducts: {}
   };
 
@@ -142,27 +142,37 @@ class App extends Component {
   };
 
   // Get product info from Open Food Data
-getInfosFromOpenFoodData = (barcode) => {
+  getInfosFromOpenFoodData = (barcode) => {
 
-  //1 take a copy ok productsData
-  const prodData = { ...this.state.productsData };
-  //2 Get new data from API 
-  fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`)
-  .then(res => res.json())
-  .then((data) => {
-    if (data.status === 1) {
-      //3 Add new data to the copy
-      prodData[data.code] = data;
-      //4 Update the state
-      this.setState({ productsData: prodData })
-    }
-    else {
-      console.log(`Product ${barcode} not found`)
-    }
-  })
-  .catch(console.log);
-}
-  
+    //1 take a copy ok productsData
+    const prodData = { ...this.state.productsData };
+    //2 Get new data from API 
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`, {
+      headers: {
+        'User-Agent': 'My-Pantry App / TESTING contact@kromatic.fr'
+      }
+    })
+      .then(res => res.json())
+      .then((data) => {
+        //Status === 1 <=> Product found
+        if (data.status === 1) {
+
+          //3 Add new data to the copy
+          prodData[data.code] = {
+            "product_name_fr": data.product.product_name_fr,
+            "image_front_url": data.product.image_front_url,
+            "code": data.product.code,
+          };
+          //4 Update the state
+          this.setState({ productsData: prodData })
+        }
+        else {
+          console.log(`Product ${barcode} not found`)
+        }
+      })
+      .catch(console.log);
+  }
+
   render() {
     //this.getInfosFromOpenFoodData("8001505005599");
 
@@ -215,6 +225,11 @@ getInfosFromOpenFoodData = (barcode) => {
           onClick={this.loadDefaultProducts}>
           TEST : charger les produits par défaut
           </Button>
+        <Button
+          variant="info"
+          onClick={() => this.getInfosFromOpenFoodData("8001505005599")}>
+          TEST : récupérer les infos du Nocciolata
+            </Button>
         {logout}
 
         <footer>
