@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //Bootstrap
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 //Styled Components
 import styled from 'styled-components'
@@ -29,6 +30,9 @@ class App extends Component {
     productsData: productsSimple,
     pantryProducts: {}
   };
+
+  barcodeRef = React.createRef()
+
 
   //lifecycle management
 
@@ -147,11 +151,13 @@ class App extends Component {
     //1 take a copy ok productsData
     const prodData = { ...this.state.productsData };
     //2 Get new data from API 
-    fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`, {
-      headers: {
-        'User-Agent': 'My-Pantry App / TESTING contact@kromatic.fr'
-      }
-    })
+    fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`
+      // HERE we should send headers with contact info, but not working 
+      // , {
+      //   headers: {
+      //     'User-Agent': 'My-Pantry App / TESTING contact@kromatic.fr'
+      //   }}
+    )
       .then(res => res.json())
       .then((data) => {
         //Status === 1 <=> Product found
@@ -164,13 +170,46 @@ class App extends Component {
             "code": data.product.code,
           };
           //4 Update the state
-          this.setState({ productsData: prodData })
+          console.log(`Updating state with product ${barcode} ${data.product.product_name_fr}`);
+          this.setState({ productsData: prodData });
         }
         else {
-          console.log(`Product ${barcode} not found`)
+          console.log(`Product ${barcode} not found`);
         }
       })
       .catch(console.log);
+  }
+
+  addProduct = (event) => {
+    // 1. Stop the form from submitting
+    event.preventDefault();
+
+    console.log(this.barcodeRef);
+    // Get current state
+
+    const currentPantryProducts = { ...this.state.pantryProducts };
+
+    const barcodeTyped = this.barcodeRef.current.value;
+
+    this.getInfosFromOpenFoodData(barcodeTyped);
+
+    if (Object.keys(this.state.productsData).includes(barcodeTyped.toString())) {
+    console.log(`this.barcodeRef.value : ${barcodeTyped}`)  
+    currentPantryProducts[barcodeTyped] = {
+        quantity: 1,
+        desiredQuantity: 2
+      }
+     this.setState({pantryProducts: currentPantryProducts}) 
+    }
+    else {
+      console.log(`Barcode ${barcodeTyped} not foud in : `);
+      console.log(Object.keys(this.state.productsData));
+    }
+    
+
+
+    //reset the form
+    event.currentTarget.reset();
   }
 
   render() {
@@ -231,6 +270,20 @@ class App extends Component {
           TEST : récupérer les infos du Nocciolata
             </Button>
         {logout}
+
+        {/* NEW PRODUCT */}
+        <Form onSubmit={this.addProduct}>
+          <Form.Group controlId="barcode">
+            <Form.Label>Ajouter un produit</Form.Label>
+            <Form.Control type="number" placeholder="3596710456727" ref={this.barcodeRef} />
+            <Form.Text className="text-muted">
+              Code barre du produit à ajouter
+            </Form.Text>
+            <Button variant="primary" type="submit">
+              Ajouter
+            </Button>
+          </Form.Group>
+        </Form>
 
         <footer>
           Image bannière :
