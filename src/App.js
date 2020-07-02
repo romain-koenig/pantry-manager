@@ -45,7 +45,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    localStorage.setItem(`pantry/${this.state.uid}`, JSON.stringify(this.state.pantryProducts));
+    // localStorage.setItem(`pantry/${this.state.uid}`, JSON.stringify(this.state.pantryProducts));
   };
 
   componentWillUnmount() {
@@ -106,17 +106,19 @@ class App extends Component {
         base.removeBinding(this.ref);
       }
       // Firebase sync
+      await base.syncState(`pantry/productsData`,
+      {
+        context: this,
+        state: 'productsData'
+      })
+
       this.ref = base.syncState(`pantry/${this.state.uid}`,
         {
           context: this,
           state: 'pantryProducts'
         });
 
-        base.syncState(`pantry/productsData`,
-        {
-          context: this,
-          state: 'productsData'
-        });
+
     }
     
     else {
@@ -269,12 +271,8 @@ class App extends Component {
           onClick={this.loadDefaultProducts}>
           TEST : charger les produits par défaut
           </Button>
-        <Button
-          variant="info"
-          onClick={() => this.getInfosFromOpenFoodData("8001505005599")}>
-          TEST : récupérer les infos du Nocciolata
-            </Button>
-        {logout}
+      
+          {logout}
 
         {/* NEW PRODUCT */}
         <Form onSubmit={this.addProduct}>
