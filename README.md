@@ -18,13 +18,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## To work on the project
 
 1. Fork / Clone the project
-1. Create a Firebase project
-1. Setup the right informations in base.js (authDomain & databaseURL)
-1. Setup you Firebase API key in .env file
-1. Create a bit.dev account and login : 
-1. npm login --registry=https://node.bit.dev --scope=@bit
-1. `npm init`
-1. `npm start`
+2. Create a Firebase project
+3. Setup the right informations in base.js (authDomain & databaseURL)
+4. Setup you Firebase API key in .env file
+6. `npm init`
+7. `npm start`
 
 ## Npm scripts available
 
