@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //Bootstrap
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 //Styled Components
 import styled from 'styled-components'
@@ -14,7 +15,7 @@ import Products from './Components/Products';
 import Login from './Components/Login';
 
 //Test data
-import products from './test-data/products';
+import productsSimple from './test-data/productsSimple';
 import defaultPantryProducts from './test-data/defaultPantryProducts.js';
 
 //Firebase
@@ -27,9 +28,12 @@ class App extends Component {
 
   state = {
     instructionsVisible: true,
-    productsData: products,
+    productsData: {},
     pantryProducts: {}
   };
+
+  barcodeRef = React.createRef()
+
 
   //lifecycle management
 
@@ -45,13 +49,16 @@ class App extends Component {
   };
 
   componentWillUnmount() {
-    base.removeBinding(this.ref);
+    if (this.ref) {
+      base.removeBinding(this.ref);
+    }
   };
 
   //End Lifecycle management
 
   loadDefaultProducts = () => {
     this.setState({
+      productsData: productsSimple,
       pantryProducts: defaultPantryProducts
     })
   };
@@ -85,7 +92,7 @@ class App extends Component {
 
 
   // Authentication handling
-
+  
   authHandler = async (authData) => {
     //Set the state of inventory component
     const userId = authData.user ? authData.user.uid : null;
@@ -94,19 +101,31 @@ class App extends Component {
     });
 
     if (userId) {
+      // remove a previous databinding if not yet removed
+      if (this.ref) {
+        base.removeBinding(this.ref);
+      }
       // Firebase sync
       this.ref = base.syncState(`pantry/${this.state.uid}`,
         {
           context: this,
           state: 'pantryProducts'
         });
+
+        base.syncState(`pantry/productsData`,
+        {
+          context: this,
+          state: 'productsData'
+        });
     }
-    else if (this.ref) {
-      base.removeBinding(this.ref);
+    
+    else {
+      if (this.ref) {
+        base.removeBinding(this.ref);
+      }
     }
     console.log(authData)
   }
-
 
   authenticate = (provider) => {
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
@@ -124,10 +143,82 @@ class App extends Component {
     })
   };
 
-  // End authenticate methods
+// Get product info from Open Food Data
+  async getInfosFromOpenFoodData(barcode) {
 
+    //1 take a copy ok productsData
+    const prodData = { ...this.state.productsData };
+    //2 Get new data from API 
+
+    const res = fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`
+      // HERE we should send headers with contact info, but not working 
+      // , {
+      //   headers: {
+      //     'User-Agent': 'My-Pantry App / TESTING contact@kromatic.fr'
+      //   }}
+    )
+      .then(res => res.json())
+      .then((data) => {
+        //Status === 1 <=> Product found
+        if (data.status === 1) {
+
+          //3 Add new data to the copy
+          prodData[data.code] = {
+            "product_name_fr": data.product.product_name_fr,
+            "image_front_url": data.product.image_front_url,
+            "code": data.product.code,
+          };
+          //4 Update the state
+          console.log(`Updating state with product ${barcode} ${data.product.product_name_fr}`);
+          this.setState({ productsData: prodData });
+        }
+        else {
+          console.log(`Product ${barcode} not found`);
+        }
+      })
+      .catch(console.log);
+      
+    return res;
+
+  }
+
+  addProduct = (event) => {
+    // 1. Stop the form from submitting
+    event.preventDefault();
+
+    console.log(this.barcodeRef);
+    // Get current state
+
+    const currentPantryProducts = { ...this.state.pantryProducts };
+
+    const barcodeTyped = this.barcodeRef.current.value;
+
+    this.getInfosFromOpenFoodData(barcodeTyped)
+      .then(() => this.updateCurrentPantry(barcodeTyped, currentPantryProducts));
+
+    //reset the form
+    event.currentTarget.reset();
+  }
+
+  updateCurrentPantry(barcodeTyped, currentPantryProducts) {
+    if (Object.keys(this.state.productsData).includes(barcodeTyped.toString())) {
+      console.log(`this.barcodeRef.value : ${barcodeTyped}`);
+      currentPantryProducts[barcodeTyped] = {
+        quantity: 1,
+        desiredQuantity: 2
+      };
+      this.setState({ pantryProducts: currentPantryProducts });
+    }
+    else {
+      console.log(`Barcode ${barcodeTyped} not foud in : `);
+      console.log(Object.keys(this.state.productsData));
+    }
+  }
+
+// End authenticate methods
 
   render() {
+    //this.getInfosFromOpenFoodData("8001505005599");
 
     const StyledJumbotron = styled(Jumbotron)`background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%),
     url(https://i.postimg.cc/ncrVnSLB/pexels-photo-4440173.png)`;
@@ -137,9 +228,7 @@ class App extends Component {
     if (!this.state.uid) {
       return (
         <div className="container">
-          <InstructionsText />
-          <Login authenticate={this.authenticate} />
-
+          <Login authenticate={this.authenticate}></Login>
         </div>
       )
     }
@@ -180,7 +269,26 @@ class App extends Component {
           onClick={this.loadDefaultProducts}>
           TEST : charger les produits par défaut
           </Button>
+        <Button
+          variant="info"
+          onClick={() => this.getInfosFromOpenFoodData("8001505005599")}>
+          TEST : récupérer les infos du Nocciolata
+            </Button>
         {logout}
+
+        {/* NEW PRODUCT */}
+        <Form onSubmit={this.addProduct}>
+          <Form.Group controlId="barcode">
+            <Form.Label>Ajouter un produit</Form.Label>
+            <Form.Control type="number" placeholder="3596710456727" ref={this.barcodeRef} />
+            <Form.Text className="text-muted">
+              Code barre du produit à ajouter
+            </Form.Text>
+            <Button variant="primary" type="submit">
+              Ajouter
+            </Button>
+          </Form.Group>
+        </Form>
 
         <footer>
           Image bannière :

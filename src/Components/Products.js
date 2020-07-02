@@ -16,10 +16,10 @@ class Products extends Component {
             key={key}
             id={key}
             product={{
-              name: this.props.productData[key].product.product_name_fr,
+              name: this.props.productData[key].product_name_fr,
               quantity: this.props.products[key].quantity,
               desiredQuantity: this.props.products[key].desiredQuantity,
-              photo: this.props.productData[key].product.image_front_url
+              photo: this.props.productData[key].image_front_url
             }}
             quantityUp={(key) => this.props.quantityUp(key)}
             quantityDown={(key) => this.props.quantityDown(key)}
