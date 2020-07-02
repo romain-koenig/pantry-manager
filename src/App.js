@@ -10,7 +10,6 @@ import styled from 'styled-components'
 
 //Application components
 import Instructions from './Components/Instructions';
-import InstructionsText from './Components/InstructionsText';
 import Products from './Components/Products';
 import Login from './Components/Login';
 
