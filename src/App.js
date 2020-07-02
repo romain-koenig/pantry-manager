@@ -146,12 +146,13 @@ class App extends Component {
   };
 
   // Get product info from Open Food Data
-  getInfosFromOpenFoodData = (barcode) => {
+  async getInfosFromOpenFoodData(barcode) {
 
     //1 take a copy ok productsData
     const prodData = { ...this.state.productsData };
     //2 Get new data from API 
-    fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`
+
+    const res = fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`
       // HERE we should send headers with contact info, but not working 
       // , {
       //   headers: {
@@ -178,6 +179,9 @@ class App extends Component {
         }
       })
       .catch(console.log);
+      
+    return res;
+
   }
 
   addProduct = (event) => {
@@ -191,25 +195,26 @@ class App extends Component {
 
     const barcodeTyped = this.barcodeRef.current.value;
 
-    this.getInfosFromOpenFoodData(barcodeTyped);
+    this.getInfosFromOpenFoodData(barcodeTyped)
+      .then(() => this.updateCurrentPantry(barcodeTyped, currentPantryProducts));
 
+    //reset the form
+    event.currentTarget.reset();
+  }
+
+  updateCurrentPantry(barcodeTyped, currentPantryProducts) {
     if (Object.keys(this.state.productsData).includes(barcodeTyped.toString())) {
-    console.log(`this.barcodeRef.value : ${barcodeTyped}`)  
-    currentPantryProducts[barcodeTyped] = {
+      console.log(`this.barcodeRef.value : ${barcodeTyped}`);
+      currentPantryProducts[barcodeTyped] = {
         quantity: 1,
         desiredQuantity: 2
-      }
-     this.setState({pantryProducts: currentPantryProducts}) 
+      };
+      this.setState({ pantryProducts: currentPantryProducts });
     }
     else {
       console.log(`Barcode ${barcodeTyped} not foud in : `);
       console.log(Object.keys(this.state.productsData));
     }
-    
-
-
-    //reset the form
-    event.currentTarget.reset();
   }
 
   render() {
