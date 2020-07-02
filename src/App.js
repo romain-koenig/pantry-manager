@@ -10,6 +10,7 @@ import styled from 'styled-components'
 
 //Application components
 import Instructions from './Components/Instructions';
+import InstructionsText from './Components/InstructionsText';
 import Products from './Components/Products';
 import Login from './Components/Login';
 
@@ -19,7 +20,7 @@ import defaultPantryProducts from './test-data/defaultPantryProducts.js';
 
 //Firebase
 import base, { firebaseApp } from "./base";
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 class App extends Component {
 
@@ -37,20 +38,15 @@ class App extends Component {
   //lifecycle management
 
   componentDidMount() {
-
-
-
     // Firebase Auth
     firebase.auth().onAuthStateChanged(user => {
       this.authHandler({ user });
     })
-
   }
 
   componentDidUpdate() {
     localStorage.setItem(`pantry/${this.state.uid}`, JSON.stringify(this.state.pantryProducts));
   };
-
 
   componentWillUnmount() {
     if (this.ref) {
@@ -59,7 +55,6 @@ class App extends Component {
   };
 
   //End Lifecycle management
-
 
   loadDefaultProducts = () => {
     this.setState({
@@ -88,21 +83,16 @@ class App extends Component {
     this.updateQuantity(key, 1);
   }
   quantityDown = (key) => {
-    this.updateQuantity(key, -1);
-  }
-
-  quantityDown = (key) => {
-
-    //1. take a copy of existing state
     const pantryProducts = { ...this.state.pantryProducts };
-    //2. Update Quantity
-    pantryProducts[key].quantity = pantryProducts[key].quantity > 0 ?
-      pantryProducts[key].quantity - 1 :
-      0;
-    //3. Update the state
-    this.setState({ pantryProducts: pantryProducts })
+
+    if (pantryProducts[key].quantity > 0) {
+      this.updateQuantity(key, -1);
+    }
   }
 
+
+  // Authentication handling
+  
   authHandler = async (authData) => {
     //Set the state of inventory component
     const userId = authData.user ? authData.user.uid : null;
@@ -128,6 +118,7 @@ class App extends Component {
           state: 'productsData'
         });
     }
+    
     else {
       if (this.ref) {
         base.removeBinding(this.ref);
@@ -152,7 +143,7 @@ class App extends Component {
     })
   };
 
-  // Get product info from Open Food Data
+// Get product info from Open Food Data
   async getInfosFromOpenFoodData(barcode) {
 
     //1 take a copy ok productsData
@@ -224,11 +215,14 @@ class App extends Component {
     }
   }
 
+// End authenticate methods
+
   render() {
     //this.getInfosFromOpenFoodData("8001505005599");
 
     const StyledJumbotron = styled(Jumbotron)`background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%),
     url(https://i.postimg.cc/ncrVnSLB/pexels-photo-4440173.png)`;
+
     const logout = <Button onClick={this.logout} variant="danger">Déconnexion</Button>
 
     if (!this.state.uid) {
@@ -237,7 +231,6 @@ class App extends Component {
           <Login authenticate={this.authenticate}></Login>
         </div>
       )
-
     }
     return (
       <div className="container">

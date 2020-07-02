@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import Twitter from '@bit/feathericons.react-feather.twitter';
 import Chrome from '@bit/feathericons.react-feather.chrome';
 
-
 class Login extends React.Component {
 
   static propTypes = {
@@ -16,6 +15,7 @@ class Login extends React.Component {
   }
 
   render() {
+
     return (
       <>
         <nav className="login">
