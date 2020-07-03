@@ -20,6 +20,7 @@ import defaultPantryProducts from './test-data/defaultPantryProducts.js';
 //Firebase
 import base, { firebaseApp } from "./base";
 import firebase from 'firebase/app';
+import User from './Components/User';
 
 class App extends Component {
 
@@ -118,8 +119,12 @@ class App extends Component {
     console.log(`Auth Data : `);
     console.log(authData);
     const userId = authData.user ? authData.user.uid : null;
+    const userName = authData.user ? authData.user.displayName : null;
+    const authProvider = authData.user ? authData.user.providerData[0].providerId : null;
     this.setState({
       uid: userId,
+      userName: userName,
+      authProvider: authProvider
     });
 
     if (userId) {
@@ -252,8 +257,6 @@ class App extends Component {
     const StyledJumbotron = styled(Jumbotron)`background-image: linear-gradient(to bottom, rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.9) 100%),
     url(https://i.postimg.cc/ncrVnSLB/pexels-photo-4440173.png)`;
 
-    const logout = <Button onClick={this.logout} variant="danger">Déconnexion</Button>
-
     if (!this.state.uid) {
       return (
         <div className="container">
@@ -263,6 +266,11 @@ class App extends Component {
     }
     return (
       <div className="container">
+
+      <User 
+      userName = {this.state.userName}
+      authProvider = {this.state.authProvider}
+      logout={this.logout}/>
 
         <StyledJumbotron>
           <h1>Dans mon placard...</h1>
@@ -316,7 +324,7 @@ class App extends Component {
           TEST : charger les produits par défaut
           </Button>
 
-        {logout}
+        
 
 
 
