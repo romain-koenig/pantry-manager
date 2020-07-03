@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 //Bootstrap
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import PlusMinus from './PlusMinus';
 
 //Barcode
 import Barcode from 'react-barcode';
@@ -13,9 +12,9 @@ class Product extends Component {
     const { name, quantity, desiredQuantity, photo } = this.props.product;
 
     const cardColor = (quantity > desiredQuantity && quantity < desiredQuantity + 3) ? "light" :
-    quantity === desiredQuantity ? "warning" : 
-      quantity < desiredQuantity ? "danger" :
-        "success";
+      quantity === desiredQuantity ? "warning" :
+        quantity < desiredQuantity ? "danger" :
+          "success";
     return (
       <Card
         bg={cardColor}>
@@ -27,24 +26,20 @@ class Product extends Component {
           <Card.Text>
 
             <div className="stock">En stock : {quantity}</div>
+            
+            <PlusMinus
+            id={this.props.id}
+            plus={this.props.quantityUp}
+            minus={this.props.quantityDown} />
+            
             <div className="seuil">A conserver : {desiredQuantity}</div>
 
-            <ButtonGroup>
-              <Button
-                onClick={() => this.props.quantityUp(this.props.id)}
-                variant="primary">
-                <span role="img" aria-label="+">
-                  ➕
-        </span>
-              </Button>
-              <Button
-                onClick={() => this.props.quantityDown(this.props.id)}
-                variant="primary">
-                <span role="img" aria-label="-">
-                  ➖
-        </span>
-              </Button>
-            </ButtonGroup>
+            <PlusMinus
+            id={this.props.id}
+            plus={this.props.desiredQuantityUp}
+            minus={this.props.desiredQuantityDown} />
+            
+
             <Barcode value={this.props.id} />
 
           </Card.Text>

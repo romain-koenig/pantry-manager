@@ -23,6 +23,8 @@ class Products extends Component {
             }}
             quantityUp={(key) => this.props.quantityUp(key)}
             quantityDown={(key) => this.props.quantityDown(key)}
+            desiredQuantityUp={(key) => this.props.desiredQuantityUp(key)}
+            desiredQuantityDown={(key) => this.props.desiredQuantityDown(key)}
           />
         )}
 

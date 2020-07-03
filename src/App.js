@@ -78,6 +78,16 @@ class App extends Component {
     this.setState({ pantryProducts: pantryProducts })
   }
 
+  updateDesiredQuantity = (key, qty) => {
+    //1. take a copy of existing state
+    const pantryProducts = { ...this.state.pantryProducts };
+    //2. Update Quantity
+    pantryProducts[key].desiredQuantity = pantryProducts[key].desiredQuantity + qty;
+    //3. Update the state
+    this.setState({ pantryProducts: pantryProducts })
+  }
+
+
   quantityUp = (key) => {
     this.updateQuantity(key, 1);
   }
@@ -89,11 +99,24 @@ class App extends Component {
     }
   }
 
+  desiredQuantityUp = (key) => {
+    this.updateDesiredQuantity(key, 1);
+  }
+  desiredQuantityDown = (key) => {
+    const pantryProducts = { ...this.state.pantryProducts };
+
+    if (pantryProducts[key].desiredQuantity > 0) {
+      this.updateDesiredQuantity(key, -1);
+    }
+  }
+
 
   // Authentication handling
-  
+
   authHandler = async (authData) => {
     //Set the state of inventory component
+    console.log(`Auth Data : `);
+    console.log(authData);
     const userId = authData.user ? authData.user.uid : null;
     this.setState({
       uid: userId,
@@ -106,10 +129,10 @@ class App extends Component {
       }
       // Firebase sync
       await base.syncState(`pantry/productsData`,
-      {
-        context: this,
-        state: 'productsData'
-      })
+        {
+          context: this,
+          state: 'productsData'
+        })
 
       this.ref = base.syncState(`pantry/${this.state.uid}`,
         {
@@ -119,7 +142,7 @@ class App extends Component {
 
 
     }
-    
+
     else {
       if (this.ref) {
         base.removeBinding(this.ref);
@@ -144,7 +167,7 @@ class App extends Component {
     })
   };
 
-// Get product info from Open Food Data
+  // Get product info from Open Food Data
   async getInfosFromOpenFoodData(barcode) {
 
     //1 take a copy ok productsData
@@ -178,7 +201,7 @@ class App extends Component {
         }
       })
       .catch(console.log);
-      
+
     return res;
 
   }
@@ -202,7 +225,8 @@ class App extends Component {
   }
 
   updateCurrentPantry(barcodeTyped, currentPantryProducts) {
-    if (Object.keys(this.state.productsData).includes(barcodeTyped.toString())) {
+    if (Object.keys(this.state.productsData).includes(barcodeTyped.toString())
+      && !Object.keys(this.state.pantryProducts).includes(barcodeTyped.toString())) {
       console.log(`this.barcodeRef.value : ${barcodeTyped}`);
       currentPantryProducts[barcodeTyped] = {
         quantity: 1,
@@ -210,13 +234,17 @@ class App extends Component {
       };
       this.setState({ pantryProducts: currentPantryProducts });
     }
-    else {
+    else if (Object.keys(this.state.productsData).includes(barcodeTyped.toString())) {
       console.log(`Barcode ${barcodeTyped} not foud in : `);
       console.log(Object.keys(this.state.productsData));
     }
+    else if (Object.keys(this.state.pantryProducts).includes(barcodeTyped.toString())) {
+      console.log(`Barcode ${barcodeTyped} already in the pantry : `);
+      console.log(Object.keys(this.state.pantryProducts));
+    }
   }
 
-// End authenticate methods
+  // End authenticate methods
 
   render() {
     //this.getInfosFromOpenFoodData("8001505005599");
@@ -247,11 +275,28 @@ class App extends Component {
 
         {/*here are the products*/}
 
+        {/* NEW PRODUCT */}
+        <Form onSubmit={this.addProduct}>
+          <Form.Group controlId="barcode">
+            <Form.Label>Ajouter un produit</Form.Label>
+            <Form.Control type="number" placeholder="3596710456727" ref={this.barcodeRef} />
+            <Form.Text className="text-muted">
+              Code barre du produit à ajouter
+                  </Form.Text>
+            <Button variant="primary" type="submit">
+              Ajouter
+                  </Button>
+          </Form.Group>
+        </Form>
+
         <Products
           products={this.state.pantryProducts}
           productData={this.state.productsData}
           quantityUp={(key) => this.quantityUp(key)}
-          quantityDown={(key) => this.quantityDown(key)} />
+          quantityDown={(key) => this.quantityDown(key)}
+
+          desiredQuantityUp={(key) => this.desiredQuantityUp(key)}
+          desiredQuantityDown={(key) => this.desiredQuantityDown(key)} />
 
 
         {/* Buttons to manage the app */}
@@ -270,22 +315,10 @@ class App extends Component {
           onClick={this.loadDefaultProducts}>
           TEST : charger les produits par défaut
           </Button>
-      
-          {logout}
 
-        {/* NEW PRODUCT */}
-        <Form onSubmit={this.addProduct}>
-          <Form.Group controlId="barcode">
-            <Form.Label>Ajouter un produit</Form.Label>
-            <Form.Control type="number" placeholder="3596710456727" ref={this.barcodeRef} />
-            <Form.Text className="text-muted">
-              Code barre du produit à ajouter
-            </Form.Text>
-            <Button variant="primary" type="submit">
-              Ajouter
-            </Button>
-          </Form.Group>
-        </Form>
+        {logout}
+
+
 
         <footer>
           Image bannière :
