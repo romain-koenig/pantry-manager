@@ -139,6 +139,12 @@ class App extends Component {
           state: 'productsData'
         })
 
+      await base.syncState(`pantry/params/${this.state.uid}/instructionsVisible`,
+        {
+          context: this,
+          state: 'instructionsVisible'
+        });
+
       this.ref = base.syncState(`pantry/${this.state.uid}`,
         {
           context: this,
@@ -267,10 +273,10 @@ class App extends Component {
     return (
       <div className="container">
 
-      <User 
-      userName = {this.state.userName}
-      authProvider = {this.state.authProvider}
-      logout={this.logout}/>
+        <User
+          userName={this.state.userName}
+          authProvider={this.state.authProvider}
+          logout={this.logout} />
 
         <StyledJumbotron>
           <h1>Dans mon placard...</h1>
@@ -324,7 +330,7 @@ class App extends Component {
           TEST : charger les produits par défaut
           </Button>
 
-        
+
 
 
 
