@@ -11,6 +11,7 @@ import styled from 'styled-components'
 import Instructions from './Components/Instructions';
 import Products from './Components/Products';
 import Login from './Components/Login';
+import Alerts from './Components/Alerts';
 
 //Test data
 import productsSimple from './test-data/productsSimple';
@@ -32,7 +33,8 @@ class App extends Component {
     pantryProducts: {},
     uid: null,
     userName: null,
-    authProvider: null
+    authProvider: null,
+    alerts: [],
   };
 
 
@@ -177,11 +179,28 @@ class App extends Component {
   };
 
 
+  removeAlert = () => {
+
+    const currentAlerts = this.state.alerts;
+    currentAlerts.shift();
+    this.setState({ alerts: currentAlerts });
+
+  }
+
 
   addProduct = (product, barcode) => {
 
     if (product === null) {
       console.log(`Pas de produit trouvé pour ${barcode}`);
+
+      const currentAlerts = this.state.alerts;
+      currentAlerts.push({
+        type: 'error_not_found',
+        productName: '',
+        barcode: barcode,
+      });
+      this.setState({ alerts: currentAlerts });
+
       return;
     }
 
@@ -210,8 +229,31 @@ class App extends Component {
     if (Object.keys(this.state.pantryProducts).includes(barcode.toString())) {
       console.log(`Barcode ${barcode} already in the pantry : `);
       console.log(Object.keys(this.state.pantryProducts));
+
+      const currentAlerts = this.state.alerts;
+      currentAlerts.push(
+        {
+          type: 'warn_arleady_there',
+          productName: product.product_name_fr,
+          barcode: barcode,
+        }
+      );
+      this.setState({ alerts: currentAlerts });
+
       return;
     }
+
+
+    const currentAlerts = this.state.alerts;
+    currentAlerts.push(
+      {
+        type: 'ok_added',
+        productName: product.product_name_fr,
+        barcode: barcode,
+      }
+    );
+    this.setState({ alerts: currentAlerts });
+
 
     console.log(`this.barcodeRef.value : ${barcode}`);
     currentPantryProducts[barcode] = {
@@ -261,8 +303,19 @@ class App extends Component {
         {/*here are the products*/}
 
         {/* NEW PRODUCT */}
-        <AddProduct addProduct={this.addProduct}/>
-        
+        <AddProduct addProduct={this.addProduct} />
+
+        {
+          this.state.alerts.map(alert => {
+            return <Alerts
+              removeAlert={this.removeAlert}
+              alertType={alert.type}
+              productName={alert.productName}
+              barcode={alert.barcode}
+            />
+          })
+        }
+
         <Products
           products={this.state.pantryProducts}
           productData={this.state.productsData}

@@ -31,7 +31,6 @@ class AddProduct extends Component {
           return null;
         }
         )
-
       let data = await res.json()
 
       //Status === 1 <=> Product found
@@ -45,7 +44,7 @@ class AddProduct extends Component {
       }
       else {
         console.log(`Product ${barcode} not found`);
-        reject(null);
+        resolve(null);
       }
     });
   }
@@ -67,27 +66,20 @@ class AddProduct extends Component {
     event.currentTarget.reset();
   }
 
-
   render() {
-    return (
-
-
-
-      <Form onSubmit={this.addProduct}>
-        <Form.Group controlId="barcode">
-          <Form.Label>Ajouter un produit</Form.Label>
-          <Form.Control type="number" placeholder="3596710456727" ref={this.barcodeRef} />
-          <Form.Text className="text-muted">
-            Code barre du produit à ajouter
+    return (      
+        <Form onSubmit={this.addProduct}>
+          <Form.Group controlId="barcode">
+            <Form.Label>Ajouter un produit</Form.Label>
+            <Form.Control type="number" placeholder="3596710456727" ref={this.barcodeRef} />
+            <Form.Text className="text-muted">
+              Code barre du produit à ajouter
         </Form.Text>
-          <Button variant="primary" type="submit">
-            Ajouter
+            <Button variant="primary" type="submit">
+              Ajouter
         </Button>
-        </Form.Group>
-      </Form>
-
-
-
+          </Form.Group>
+        </Form>
     );
   }
 }
