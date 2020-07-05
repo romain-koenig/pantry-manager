@@ -26,24 +26,24 @@ class Product extends Component {
           <Card.Text>
 
             <div className="stock">En stock : {quantity}</div>
-            
+
             <PlusMinus
-            id={this.props.id}
-            plus={this.props.quantityUp}
-            minus={this.props.quantityDown} />
-            
+              id={this.props.id}
+              plus={this.props.quantityUp}
+              minus={this.props.quantityDown} />
+
             <div className="seuil">A conserver : {desiredQuantity}</div>
 
             <PlusMinus
-            id={this.props.id}
-            plus={this.props.desiredQuantityUp}
-            minus={this.props.desiredQuantityDown} />
-            
+              id={this.props.id}
+              plus={this.props.desiredQuantityUp}
+              minus={this.props.desiredQuantityDown} />
 
+            {/*
             <Barcode value={this.props.id} />
+            */}
 
           </Card.Text>
-
 
         </Card.Body>
         <Card.Img
