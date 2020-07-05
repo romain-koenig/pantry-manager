@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import PlusMinus from './PlusMinus';
 
 //Barcode
-import Barcode from 'react-barcode';
+//import Barcode from 'react-barcode';
 
 class Product extends Component {
   render() {
