@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
     "firebase": "^7.15.5",
+    "quagga": "^0.12.1",
     "re-base": "^4.0.0",
     "react": "^16.13.1",
     "react-barcode": "^1.4.0",

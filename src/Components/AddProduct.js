@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Quagga from 'quagga';
+
 //Bootstrap
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form';
 
 class AddProduct extends Component {
 
+  state = {
+    showScan: false,
+  }
+
   barcodeRef = React.createRef()
 
   static propTypes = {
     addProduct: PropTypes.func.isRequired,
+    videoError: false,
+    videoInit: false,
   }
 
   // Get product info from Open Food Data
@@ -66,8 +74,58 @@ class AddProduct extends Component {
     event.currentTarget.reset();
   }
 
+  showScan = () => {
+    this.setState({ showScan: true });
+
+    if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
+      // safely access `navigator.mediaDevices.getUserMedia`
+
+      Quagga.init({
+        inputStream: {
+          name: "Live",
+          type: "LiveStream",
+          target: document.querySelector('#video')
+        },
+        numOfWorkers: 4,
+        locate: true,
+        decoder: {
+          readers: [
+            'code_128_reader',
+            'ean_8_reader',
+            'upc_reader',
+            'upc_e_reader'
+          ]
+        }
+      }, (err) => {
+        if (err) {
+          this.setState({ videoError: true });
+          return;
+        }
+        this.onInitSuccess();
+      });
+
+
+      Quagga.onDetected(this.onDetected);
+    }
+  }
+
+  onInitSuccess = () => {
+    Quagga.start();
+    this.setState({ videoInit: true });
+  }
+
+  onDetected = (result) => {
+    Quagga.offDetected(this.onDetected);
+    Quagga.stop();
+    this.setState({ showScan: false });
+    alert(`QUAGGA - code found : ${result.codeResult.code}`);
+    console.log(`QUAGGA - code found : ${result.codeResult.code}`);
+  }
+
+
   render() {
-    return (      
+    return (
+      <>
         <Form onSubmit={this.addProduct}>
           <Form.Group controlId="barcode">
             <Form.Label>Ajouter un produit</Form.Label>
@@ -80,6 +138,17 @@ class AddProduct extends Component {
         </Button>
           </Form.Group>
         </Form>
+
+        <Button variant="primary"
+          onClick={this.showScan}>
+          SCAN <span role="img" aria-label="photo">📷</span></Button>
+
+        <div style={{ display: this.state.showScan ? 'block' : 'none' }} id="video">
+
+        </div>
+
+
+      </>
     );
   }
 }
