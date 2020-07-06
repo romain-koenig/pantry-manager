@@ -139,14 +139,16 @@ class AddProduct extends Component {
           </Form.Group>
         </Form>
 
-        <Button variant="primary"
+        {/*
+          <Button variant="primary"
           onClick={this.showScan}>
           SCAN <span role="img" aria-label="photo">📷</span> TEST pas encore utilisable</Button>
-
-        <div style={{ display: this.state.showScan ? 'block' : 'none' }} id="video">
-
-        </div>
-
+          
+          <div style={{ display: this.state.showScan ? 'block' : 'none' }} id="video">
+          
+          </div>
+          
+        */}
 
       </>
     );
