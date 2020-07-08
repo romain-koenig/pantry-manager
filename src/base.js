@@ -6,8 +6,8 @@ import 'firebase/database';
 
 const firebaseApp = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "pantry-manager-rko.firebaseapp.com",
-  databaseURL: "https://pantry-manager-rko.firebaseio.com"
+  authDomain: "pantry-nanager.firebaseapp.com",
+  databaseURL: "https://pantry-nanager.firebaseio.com"
 });
 
 const base = Rebase.createClass(firebaseApp.database());
