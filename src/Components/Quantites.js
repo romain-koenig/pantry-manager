@@ -31,7 +31,13 @@ const Quantites = props => {
 };
 
 Quantites.propTypes = {
-
+  id: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
+  desiredQuantity: PropTypes.number.isRequired,
+  quantityUp: PropTypes.func.isRequired,
+  quantityDown: PropTypes.func.isRequired,
+  desiredQuantityUp: PropTypes.func.isRequired,
+  desiredQuantityDown: PropTypes.func.isRequired,
 };
 
 export default Quantites;

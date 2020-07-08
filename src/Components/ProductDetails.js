@@ -67,7 +67,14 @@ const ProductDetails = props => {
 };
 
 ProductDetails.propTypes = {
-
+  show: PropTypes.bool.isRequired,
+  onHide: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  product: PropTypes.object.isRequired,
+  quantityUp: PropTypes.func.isRequired,
+  quantityDown: PropTypes.func.isRequired,
+  desiredQuantityUp: PropTypes.func.isRequired,
+  desiredQuantityDown: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;

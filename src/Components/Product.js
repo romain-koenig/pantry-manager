@@ -13,7 +13,7 @@ const Product = props => {
 
   const [modalShow, setModalShow] = useState(false);
 
-  const { name, quantity, desiredQuantity, photo } = props.product;
+  const { name, quantity, desiredQuantity } = props.product;
 
   const cardColor = (quantity > desiredQuantity && quantity < desiredQuantity + 3) ? "light" :
     quantity === desiredQuantity ? "warning" :
