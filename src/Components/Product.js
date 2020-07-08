@@ -25,7 +25,7 @@ class Product extends Component {
           </Card.Title>
           <Card.Text>
 
-            <div className="row justify-content-between align-items-center mx-md-5">
+            <div className="row justify-content-between align-items-center mx-lg-4">
 
               <div className="stock">En stock : {quantity}</div>
 
@@ -36,7 +36,7 @@ class Product extends Component {
 
             </div>
 
-            <div className="row justify-content-between align-items-center mx-md-5">
+            <div className="row justify-content-between align-items-center mx-lg-4">
 
               <div className="seuil">A conserver : {desiredQuantity}</div>
 
