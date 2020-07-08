@@ -39,7 +39,8 @@ class Products extends Component {
       <>
         <ProductsBadges
           products={this.props.products}
-          showOnlyAlert={this.showOnlyAlert} />
+          showOnlyAlert={this.showOnlyAlert}
+          onlyAlert={this.state.onlyAlert} />
 
         <CardColumns>
 

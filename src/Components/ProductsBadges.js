@@ -2,7 +2,8 @@ import React from 'react';
 
 //Bootstrap
 import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 
 //StyledComponents
 import styled from 'styled-components';
@@ -24,27 +25,38 @@ const ProductsBadges = (props) => {
     , 0);
 
   return (
+    <>
+      <SpacedDiv>
 
-    <SpacedDiv>
-
-      <span>Types de produits&nbsp;
-          <Badge pill variant="light">{productTypes}</Badge>
-      </span>
-      <span> - Produits en stock&nbsp;
-          <Badge pill variant="light">{productsInStock}</Badge>
-      </span>
-      <span> - Produits A conserver&nbsp;
-          <Badge pill variant="light">{productsToStock}</Badge>
-      </span>
-      <span> - Produits manquants&nbsp;
+        <span>Types de produits&nbsp;
+    <Badge pill variant="light">{productTypes}</Badge>
+        </span>
+        <span> - Produits en stock&nbsp;
+      <Badge pill variant="light">{productsInStock}</Badge>
+        </span>
+        <span> - Produits A conserver&nbsp;
+      <Badge pill variant="light">{productsToStock}</Badge>
+        </span>
+        <span> - Produits manquants&nbsp;
           <Badge pill variant="light">{productsToBuy}</Badge>
-      </span>
-      <Button variant="primary"
-        onClick={props.showOnlyAlert}>Montrer les produits en alerte uniquement
-      </Button>
+        </span>
+      </SpacedDiv>
+      <SpacedDiv>
 
-    </SpacedDiv>
+        <ToggleButtonGroup
+          type="checkbox"
+          onChange={props.showOnlyAlert}>
 
+          <ToggleButton type="checkbox"
+            checked={props.onlyAlert}
+            variant={props.onlyAlert ? "outline-primary" : "primary"}
+            value="0">
+            {props.onlyAlert ? "Montrer tout" : "Montrer les produits en alerte uniquement"}
+          </ToggleButton>
+        </ToggleButtonGroup>
+
+      </SpacedDiv>
+    </>
   );
 }
 
