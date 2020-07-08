@@ -5,19 +5,45 @@ import CardColumns from 'react-bootstrap/CardColumns';
 
 //My Components
 import Product from './Product';
-import ProductsBadges from './ProducstBadges';
+import ProductsBadges from './ProductsBadges';
 
 class Products extends Component {
 
+  state = { onlyAlert: false }
+
+
+  filter = (obj, predicate) => {
+    let result = {}, key;
+
+    for (key in obj) {
+      if (obj.hasOwnProperty(key) && predicate(obj[key])) {
+        result[key] = obj[key];
+      }
+    }
+
+    return result;
+  };
+
+  showOnlyAlert = () => {
+    this.setState({
+      onlyAlert: !this.state.onlyAlert
+    })
+  }
+
   render() {
 
+    const productsToDisplay = this.state.onlyAlert ?
+      this.filter(this.props.products, product => product.quantity <= product.desiredQuantity) :
+      this.props.products;
     return (
       <>
-        <ProductsBadges products={this.props.products} />
+        <ProductsBadges
+          products={this.props.products}
+          showOnlyAlert={this.showOnlyAlert} />
 
         <CardColumns>
 
-          {Object.keys(this.props.products).map(key =>
+          {Object.keys(productsToDisplay).map(key =>
             <Product
               key={key}
               id={key}
