@@ -11,12 +11,16 @@ const PlusMinus = (props) => {
     >
       <Button
         onClick={() => props.plus(props.id)}
-        variant="sm btn-primary">
+        variant="primary"
+        size="sm"
+        >
         <span role="img" aria-label="+">➕</span>
       </Button>
       <Button
         onClick={() => props.minus(props.id)}
-        variant="sm btn-primary">
+        variant="primary"
+        size="sm"
+        >
         <span role="img" aria-label="-">➖</span>
       </Button>
     </ButtonGroup>
