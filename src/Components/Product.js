@@ -25,20 +25,27 @@ class Product extends Component {
           </Card.Title>
           <Card.Text>
 
-            <div className="stock">En stock : {quantity}</div>
+            <div className="row justify-content-between align-items-center mx-md-5">
 
-            <PlusMinus
-              id={this.props.id}
-              plus={this.props.quantityUp}
-              minus={this.props.quantityDown} />
+              <div className="stock">En stock : {quantity}</div>
 
-            <div className="seuil">A conserver : {desiredQuantity}</div>
+              <PlusMinus
+                id={this.props.id}
+                plus={this.props.quantityUp}
+                minus={this.props.quantityDown} />
 
-            <PlusMinus
-              id={this.props.id}
-              plus={this.props.desiredQuantityUp}
-              minus={this.props.desiredQuantityDown} />
+            </div>
 
+            <div className="row justify-content-between align-items-center mx-md-5">
+
+              <div className="seuil">A conserver : {desiredQuantity}</div>
+
+              <PlusMinus
+                id={this.props.id}
+                plus={this.props.desiredQuantityUp}
+                minus={this.props.desiredQuantityDown} />
+
+            </div>
             {/*
             <Barcode value={this.props.id} />
             */}

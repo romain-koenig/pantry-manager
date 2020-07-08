@@ -6,15 +6,17 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 const PlusMinus = (props) => {
   return (
-    <ButtonGroup>
+    <ButtonGroup
+      className="btn-sm"
+    >
       <Button
         onClick={() => props.plus(props.id)}
-        variant="primary">
+        variant="sm btn-primary">
         <span role="img" aria-label="+">➕</span>
       </Button>
       <Button
         onClick={() => props.minus(props.id)}
-        variant="primary">
+        variant="sm btn-primary">
         <span role="img" aria-label="-">➖</span>
       </Button>
     </ButtonGroup>
