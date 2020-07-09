@@ -25,25 +25,39 @@ const ProductDetails = props => {
       <Modal.Header closeButton>
         <Modal.Title id={props.id}>
           {name}
-      </Modal.Title>
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="show-grid">
         <Container>
           <Row>
             <Col xs={12} md={8}>
               <Quantites
-              id={props.id}
-              quantity={quantity}
-              desiredQuantity={desiredQuantity}
-              quantityUp={props.quantityUp}
-              quantityDown={props.quantityDown}
-              desiredQuantityUp={props.desiredQuantityUp}
-              desiredQuantityDown={props.desiredQuantityDown}
+                id={props.id}
+                quantity={quantity}
+                desiredQuantity={desiredQuantity}
+                quantityUp={props.quantityUp}
+                quantityDown={props.quantityDown}
+                desiredQuantityUp={props.desiredQuantityUp}
+                desiredQuantityDown={props.desiredQuantityDown}
               />
-              *** De la place pour plus d'infos ici... à venir...<br/>
-              *** De la place pour plus d'infos ici... à venir...<br/>
-              *** De la place pour plus d'infos ici... à venir...<br/>
-              <Barcode value={props.id} />  
+              <br />
+              *** Plus d'infos ici... à venir...<br />
+              <br />
+              Besoin de plus d'informations ? Des corrections à apporter ?<br />
+              Consultez et modifiez ce produit sur <a
+                href={`https://fr.openfoodfacts.org/produit/${props.id}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                OpenFoodFacts
+              </a>
+              <Barcode value={props.id} />
+              <Button
+              variant="danger"
+              onClick={_ => props.deleteProduct(props.id)}
+              >
+                Supprimer le produit <span role="img" aria-label="poubelle">🚮</span>
+              </Button>
             </Col>
             <Col xs={12} md={4}>
               <Image
@@ -52,7 +66,7 @@ const ProductDetails = props => {
               />
             </Col>
           </Row>
-          
+
         </Container>
       </Modal.Body>
       <Modal.Footer>
@@ -75,6 +89,7 @@ ProductDetails.propTypes = {
   quantityDown: PropTypes.func.isRequired,
   desiredQuantityUp: PropTypes.func.isRequired,
   desiredQuantityDown: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;

@@ -5,19 +5,46 @@ import CardColumns from 'react-bootstrap/CardColumns';
 
 //My Components
 import Product from './Product';
-import ProductsBadges from './ProducstBadges';
+import ProductsBadges from './ProductsBadges';
 
 class Products extends Component {
 
+  state = { onlyAlert: false }
+
+
+  filter = (obj, predicate) => {
+    let result = {}, key;
+
+    for (key in obj) {
+      if (obj.hasOwnProperty(key) && predicate(obj[key])) {
+        result[key] = obj[key];
+      }
+    }
+
+    return result;
+  };
+
+  showOnlyAlert = () => {
+    this.setState({
+      onlyAlert: !this.state.onlyAlert
+    })
+  }
+
   render() {
 
+    const productsToDisplay = this.state.onlyAlert ?
+      this.filter(this.props.products, product => product.quantity <= product.desiredQuantity) :
+      this.props.products;
     return (
       <>
-        <ProductsBadges products={this.props.products} />
+        <ProductsBadges
+          products={this.props.products}
+          showOnlyAlert={this.showOnlyAlert}
+          onlyAlert={this.state.onlyAlert} />
 
         <CardColumns>
 
-          {Object.keys(this.props.products).map(key =>
+          {Object.keys(productsToDisplay).map(key =>
             <Product
               key={key}
               id={key}
@@ -31,6 +58,7 @@ class Products extends Component {
               quantityDown={(key) => this.props.quantityDown(key)}
               desiredQuantityUp={(key) => this.props.desiredQuantityUp(key)}
               desiredQuantityDown={(key) => this.props.desiredQuantityDown(key)}
+              deleteProduct={(key) => this.props.deleteProduct(key)}
             />
           )}
 

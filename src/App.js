@@ -187,6 +187,35 @@ class App extends Component {
 
   }
 
+  deleteProduct = (productId) => {
+
+    // Get current state
+    const currentPantryProducts = { ...this.state.pantryProducts };
+    // Set new product in the copy of state
+    let filteredPantry = {}
+    Object.keys(currentPantryProducts).forEach(key => {
+      if (key !== productId) {
+        filteredPantry[key] = currentPantryProducts[key];
+        console.log(`I keep product ${key}`);
+      }
+      else {
+        console.log(`I DON'T keep product ${key}`);
+      }
+    })
+    //update state
+    console.log("this.state.pantryProducts");
+    console.log(this.state.pantryProducts);
+    console.log("filteredPantry");
+    console.log(filteredPantry);
+    this.setState(
+      {
+        pantryProducts: filteredPantry
+      }, _ => {
+        console.log("this.state.pantryProducts AFTER SET STATE");
+        console.log(this.state.pantryProducts);
+      });
+  }
+
 
   addProduct = (product, barcode) => {
 
@@ -264,7 +293,7 @@ class App extends Component {
       {
         pantryProducts:
           currentPantryProducts
-      });
+      }, _ => {console.log(`Product ${barcode} added`)});
   }
 
 
@@ -322,7 +351,8 @@ class App extends Component {
           quantityUp={(key) => this.quantityUp(key)}
           quantityDown={(key) => this.quantityDown(key)}
           desiredQuantityUp={(key) => this.desiredQuantityUp(key)}
-          desiredQuantityDown={(key) => this.desiredQuantityDown(key)} />
+          desiredQuantityDown={(key) => this.desiredQuantityDown(key)}
+          deleteProduct={(key) => this.deleteProduct(key)} />
 
 
         {/* Buttons to manage the app */}

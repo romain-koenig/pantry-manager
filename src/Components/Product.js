@@ -8,10 +8,12 @@ import Button from 'react-bootstrap/Button'
 import ProductDetails from './ProductDetails';
 import Quantites from './Quantites';
 
+//Styles Components
+import styled from 'styled-components';
+
 const Product = props => {
 
-
-  const [modalShow, setModalShow] = useState(false);
+  const [modalDetailsProduitsShow, setModalDetailsProduitsShow] = useState(false);
 
   const { name, quantity, desiredQuantity } = props.product;
 
@@ -19,26 +21,31 @@ const Product = props => {
     quantity === desiredQuantity ? "warning" :
       quantity < desiredQuantity ? "danger" :
         "success";
+
+  const StyledButton = styled(Button)`margin-top: 1rem`
+
   return (
     <>
       <ProductDetails
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+        show={modalDetailsProduitsShow}
+        onHide={() => setModalDetailsProduitsShow(false)}
         id={props.id}
         product={props.product}
         quantityUp={props.quantityUp}
         quantityDown={props.quantityDown}
         desiredQuantityUp={props.desiredQuantityUp}
         desiredQuantityDown={props.desiredQuantityDown}
+        deleteProduct={props.deleteProduct}
       />
       <Card
-        bg={cardColor}>
-
-        <Card.Body>
-          <Card.Title>
-            <h2>{name}</h2>
-          </Card.Title>
+      bg={cardColor}>
+      
+      <Card.Body>
+      <Card.Title>
+      <h2>{name}</h2>
+      </Card.Title>
           <Card.Text>
+          </Card.Text>
 
             <Quantites
               id={props.id}
@@ -51,15 +58,16 @@ const Product = props => {
 
             />
 
-            <Button
-              variant="info"
-              onClick={() => setModalShow(true)}
-              block
-            >
-              Détails
-            </Button>
 
-          </Card.Text>
+
+
+          <StyledButton
+          variant="info"
+          onClick={() => setModalDetailsProduitsShow(true)}
+          block
+        >
+          Détails <span role="img" aria-label="loupe">🔍</span>
+        </StyledButton>
 
         </Card.Body>
         {/*
