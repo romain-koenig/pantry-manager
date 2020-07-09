@@ -11,14 +11,14 @@ const PlusMinus = (props) => {
     >
       <Button
         onClick={() => props.plus(props.id)}
-        variant="primary"
+        variant="light"
         size="sm"
         >
         <span role="img" aria-label="+">➕</span>
       </Button>
       <Button
         onClick={() => props.minus(props.id)}
-        variant="primary"
+        variant="light"
         size="sm"
         >
         <span role="img" aria-label="-">➖</span>
