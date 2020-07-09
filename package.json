@@ -37,18 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "Pantry Manager in React  \r User Interface made with Bootstrap  \r Authentification + Data stored in Firebase",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mgandrille/pantry-manager.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mgandrille/pantry-manager/issues"
-  },
-  "homepage": "https://github.com/mgandrille/pantry-manager",
-  "devDependencies": {}
+  }
 }

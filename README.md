@@ -18,7 +18,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## To work on the project
 
 1. Fork / Clone the project
-2. Create a Firebase project
+2. Create a Firebase project  (realtime database, open the read/write rights)
 3. Setup the right informations in base.js (authDomain & databaseURL)
 4. Setup you Firebase API key in .env file
 5. `npm init`
