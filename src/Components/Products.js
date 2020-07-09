@@ -58,6 +58,7 @@ class Products extends Component {
               quantityDown={(key) => this.props.quantityDown(key)}
               desiredQuantityUp={(key) => this.props.desiredQuantityUp(key)}
               desiredQuantityDown={(key) => this.props.desiredQuantityDown(key)}
+              deleteProduct={(key) => this.props.deleteProduct(key)}
             />
           )}
 
