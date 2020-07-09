@@ -1,21 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 //Bootstrap
 import Card from 'react-bootstrap/Card';
-import PlusMinus from './PlusMinus';
+import Button from 'react-bootstrap/Button'
 
-//Barcode
-//import Barcode from 'react-barcode';
+//My Components
+import ProductDetails from './ProductDetails';
+import Quantites from './Quantites';
 
-class Product extends Component {
-  render() {
-    const { name, quantity, desiredQuantity, photo } = this.props.product;
+const Product = props => {
 
-    const cardColor = (quantity > desiredQuantity && quantity < desiredQuantity + 3) ? "light" :
-      quantity === desiredQuantity ? "warning" :
-        quantity < desiredQuantity ? "danger" :
-          "success";
-    return (
+
+  const [modalShow, setModalShow] = useState(false);
+
+  const { name, quantity, desiredQuantity } = props.product;
+
+  const cardColor = (quantity > desiredQuantity && quantity < desiredQuantity + 3) ? "light" :
+    quantity === desiredQuantity ? "warning" :
+      quantity < desiredQuantity ? "danger" :
+        "success";
+  return (
+    <>
+      <ProductDetails
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        id={props.id}
+        product={props.product}
+        quantityUp={props.quantityUp}
+        quantityDown={props.quantityDown}
+        desiredQuantityUp={props.desiredQuantityUp}
+        desiredQuantityDown={props.desiredQuantityDown}
+      />
       <Card
         bg={cardColor}>
 
@@ -25,40 +40,37 @@ class Product extends Component {
           </Card.Title>
           <Card.Text>
 
-            <div className="row justify-content-between align-items-center mx-lg-4">
+            <Quantites
+              id={props.id}
+              quantity={quantity}
+              desiredQuantity={desiredQuantity}
+              quantityUp={props.quantityUp}
+              quantityDown={props.quantityDown}
+              desiredQuantityUp={props.desiredQuantityUp}
+              desiredQuantityDown={props.desiredQuantityDown}
 
-              <div className="stock">En stock : {quantity}</div>
+            />
 
-              <PlusMinus
-                id={this.props.id}
-                plus={this.props.quantityUp}
-                minus={this.props.quantityDown} />
-
-            </div>
-
-            <div className="row justify-content-between align-items-center mx-lg-4">
-
-              <div className="seuil">A conserver : {desiredQuantity}</div>
-
-              <PlusMinus
-                id={this.props.id}
-                plus={this.props.desiredQuantityUp}
-                minus={this.props.desiredQuantityDown} />
-
-            </div>
-            {/*
-            <Barcode value={this.props.id} />
-            */}
+            <Button
+              variant="info"
+              onClick={() => setModalShow(true)}
+              block
+            >
+              Détails
+            </Button>
 
           </Card.Text>
 
         </Card.Body>
+        {/*
         <Card.Img
           variant="bottom"
           src={photo} />
+        */}
       </Card>
-    );
-  }
+    </>
+  );
 }
+
 
 export default Product
