@@ -5,7 +5,7 @@ import PlusMinus from './PlusMinus';
 const Quantites = props => {
   return (
     <>
-      <div className="row justify-content-between align-items-center mx-lg-4">
+      <div className="row justify-content-between align-items-center px-2 px-md-3 px-lg-4">
 
         <div className="stock">En stock : {props.quantity}</div>
 
@@ -16,7 +16,7 @@ const Quantites = props => {
 
       </div>
 
-      <div className="row justify-content-between align-items-center mx-lg-4">
+        <div className="row justify-content-between align-items-center px-2 px-md-3 px-lg-4">
 
         <div className="seuil">A conserver : {props.desiredQuantity}</div>
 
