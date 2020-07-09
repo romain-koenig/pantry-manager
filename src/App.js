@@ -293,7 +293,7 @@ class App extends Component {
       {
         pantryProducts:
           currentPantryProducts
-      });
+      }, _ => {console.log(`Product ${barcode} added`)});
   }
 
 
