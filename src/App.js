@@ -293,7 +293,7 @@ class App extends Component {
       {
         pantryProducts:
           currentPantryProducts
-      }, _ => {console.log(`Product ${barcode} added`)});
+      }, _ => { console.log(`Product ${barcode} added`) });
   }
 
 
@@ -377,12 +377,14 @@ class App extends Component {
 
 
         <footer>
-          Image bannière :
-Photo by <a
-            href="https://www.pexels.com/@taryn-elliott?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels"
-            target="blank">Taryn Elliott</a> from <a
-              href="https://www.pexels.com/photo/clear-glass-jars-on-white-wooden-shelf-4440173/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels"
-              target="blank">Pexels</a>
+          Fait avec <span role="img" aria-label="heart">❤</span> par <a href="https://kromatic.fr" target="_blank"
+            rel="noopener noreferrer">Kromatic</a>.<br />
+    Code à retrouver sur <a href="https://github.com/romain-koenig/pantry-manager" target="_blank" rel="noopener noreferrer">GitHub</a>.
+{/*           Image bannière : Photo by <a
+             href="https://www.pexels.com/@taryn-elliott?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels"
+             target="blank">Taryn Elliott</a> from <a
+               href="https://www.pexels.com/photo/clear-glass-jars-on-white-wooden-shelf-4440173/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels"
+               target="blank">Pexels</a>*/}
         </footer>
       </div>
     );
