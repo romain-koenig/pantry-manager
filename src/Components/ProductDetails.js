@@ -41,9 +41,9 @@ const ProductDetails = props => {
                 desiredQuantityDown={props.desiredQuantityDown}
               />
               <br />
-              *** Plus d'infos ici... à venir...<br />
+              *** Plus d'infos ici... à venir... ***<br />
               <br />
-              Besoin de plus d'informations ? Des corrections à apporter ?<br />
+              Des corrections à apporter sur ce produit ?<br />
               Consultez et modifiez ce produit sur <a
                 href={`https://fr.openfoodfacts.org/produit/${props.id}/`}
                 target="_blank"
