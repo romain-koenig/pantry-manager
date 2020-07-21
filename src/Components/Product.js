@@ -38,36 +38,41 @@ const Product = props => {
         deleteProduct={props.deleteProduct}
       />
       <Card
-      bg={cardColor}>
-      
-      <Card.Body>
-      <Card.Title>
-      <h2>{name}</h2>
-      </Card.Title>
+        bg={cardColor}>
+
+        <Card.Body>
+          <Card.Title>
+            <h2>{name}</h2>
+          </Card.Title>
           <Card.Text>
           </Card.Text>
 
-            <Quantites
-              id={props.id}
-              quantity={quantity}
-              desiredQuantity={desiredQuantity}
-              quantityUp={props.quantityUp}
-              quantityDown={props.quantityDown}
-              desiredQuantityUp={props.desiredQuantityUp}
-              desiredQuantityDown={props.desiredQuantityDown}
+          <Quantites
+            id={props.id}
+            quantity={quantity}
+            desiredQuantity={desiredQuantity}
+            quantityUp={props.quantityUp}
+            quantityDown={props.quantityDown}
+            desiredQuantityUp={props.desiredQuantityUp}
+            desiredQuantityDown={props.desiredQuantityDown}
 
-            />
+          />
 
 
 
 
           <StyledButton
-          variant="info"
-          onClick={() => setModalDetailsProduitsShow(true)}
-          block
-        >
-          Détails <span role="img" aria-label="loupe">🔍</span>
-        </StyledButton>
+            variant="info"
+            onClick={() => setModalDetailsProduitsShow(true)}
+            block
+          >
+            Détails <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" />
+              <circle cx="10" cy="10" r="7" />
+              <line x1="21" y1="21" x2="15" y2="15" />
+            </svg>
+
+          </StyledButton>
 
         </Card.Body>
         {/*
