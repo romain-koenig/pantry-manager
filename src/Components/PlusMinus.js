@@ -4,6 +4,10 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
+//Icons
+import { Plus } from 'tabler-icons-react';
+import { Minus } from 'tabler-icons-react';
+
 const PlusMinus = (props) => {
   return (
     <ButtonGroup
@@ -16,12 +20,11 @@ const PlusMinus = (props) => {
         size="sm"
         className="px-1"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" />
-          <circle cx="12" cy="12" r="9" />
-          <line x1="9" y1="12" x2="15" y2="12" />
-          <line x1="12" y1="9" x2="12" y2="15" />
-        </svg>
+        <Plus
+          size={24}
+          strokeWidth={2}
+          color={'currentColor'}
+        />
       </Button>
       <Button
         onClick={() => props.minus(props.id)}
@@ -30,11 +33,11 @@ const PlusMinus = (props) => {
         className="px-1"
       >
 
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" />
-          <circle cx="12" cy="12" r="9" />
-          <line x1="9" y1="12" x2="15" y2="12" />
-        </svg>
+        <Minus
+          size={24}
+          strokeWidth={2}
+          color={'currentColor'}
+        />
 
       </Button>
     </ButtonGroup>

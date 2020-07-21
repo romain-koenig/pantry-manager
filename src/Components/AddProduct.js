@@ -139,7 +139,9 @@ class AddProduct extends Component {
           </Form.Group>
         </Form>
 
-        <Button variant="primary"
+        {/*
+
+          <Button variant="primary"
           onClick={this.showScan}>
           SCAN (TEST) <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-scan" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z"/>
@@ -154,6 +156,8 @@ class AddProduct extends Component {
         <div style={{ display: this.state.showScan ? 'block' : 'none' }} id="video">
 
         </div>
+
+    */}
 
       </>
     );
